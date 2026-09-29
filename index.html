@@ -130,6 +130,7 @@ body.pronto .hero img{transform:scale(1)}
 .mesa{border:1px solid var(--gold-soft);border-radius:14px;padding:12px 28px 14px;background:var(--ivory);text-align:center;min-width:170px}
 .mesa small{display:block;font-size:10px;letter-spacing:.28em;text-transform:uppercase;color:var(--gold)}
 .mesa b{display:block;font-family:var(--serif);font-variant-numeric:lining-nums;font-weight:500;font-size:34px;line-height:1.1;color:var(--forest)}
+.mesa em{display:block;font-style:normal;font-size:12px;color:var(--muted);margin-top:2px}
 .sem-criancas{font-size:13px!important;color:var(--muted)!important;margin-top:0!important;max-width:320px}
 .versiculo{margin:44px auto 0;max-width:380px;font-family:var(--serif);font-style:italic;font-size:22px;line-height:1.35;color:var(--green)}
 .versiculo cite{display:block;margin-top:8px;font-family:var(--sans);font-style:normal;font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--muted)}
@@ -321,6 +322,7 @@ footer small{display:block;margin-top:26px;font-size:11px;letter-spacing:.26em;t
         <div class="mesa oculto" id="mesa">
           <small>A vossa mesa</small>
           <b id="mesaTxt"></b>
+          <em id="mesaTipo"></em>
         </div>
         <p class="sem-criancas">Pedimos a vossa compreensão: esta celebração é reservada a adultos, sem crianças.</p>
       </div>
@@ -568,7 +570,13 @@ var PROGRAMA = [
   var lugares = parseInt(q.get("l") || q.get("lugares") || "0", 10);
   if (!(lugares > 0 && lugares < 21)) lugares = CONFIG.lugaresPadrao;
   var mesa = (q.get("m") || q.get("mesa") || "").trim().slice(0, 30);
-  var mesaNome = /^\d+$/.test(mesa) ? "Mesa " + mesa : mesa;
+  var MESAS = {
+    1:["Zambeze","Rio"], 2:["Púnguè","Rio"], 3:["Revué","Rio"], 4:["Limpopo","Rio"],
+    5:["Salomão","Autor bíblico"], 6:["Isaías","Autor bíblico"], 7:["Mateus","Autor bíblico"], 8:["João","Autor bíblico"],
+    9:["Ilha de Moçambique","Monumento histórico"], 10:["Cabeça do Velho","Monumento histórico"], 11:["Chinhamapere","Monumento histórico"], 12:["Fortaleza de São Sebastião","Monumento histórico"]
+  };
+  var mesaInfo = MESAS[mesa];
+  var mesaNome = mesaInfo ? "Mesa " + mesaInfo[0] : (/^\d+$/.test(mesa) ? "Mesa " + mesa : mesa);
 
   if (nome) {
     $("capaRotulo").textContent = "Convite especial para";
@@ -580,7 +588,9 @@ var PROGRAMA = [
   $("lugaresTxt").innerHTML = "Convite válido para <b>" + lugares + (lugares === 1 ? " pessoa" : " pessoas") + "</b>";
   if (mesa) {
     $("mesa").classList.remove("oculto");
-    $("mesaTxt").textContent = mesaNome;
+    $("mesaTxt").textContent = mesaInfo ? mesaInfo[0] : mesaNome;
+    $("mesaTipo").textContent = mesaInfo ? mesaInfo[1] + " · mesa " + mesa : "";
+    if (mesaInfo && mesaInfo[0].length > 14) $("mesaTxt").style.fontSize = "26px";
   }
   var maxPessoas = lugares;
   if (CONFIG.prazoConfirmacao) {

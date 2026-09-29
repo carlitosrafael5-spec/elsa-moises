@@ -32,7 +32,7 @@ https://carlitosrafael5-spec.github.io/elsa-moises/?n=Família+Rafael&m=5
 ```
 
 - `n` · nome que aparece no envelope, na saudação e já preenchido na confirmação
-- `m` · mesa do convidado
+- `m` · número da mesa (1 a 12). O convite mostra o nome: 1 Zambeze, 2 Púnguè, 3 Revué, 4 Limpopo, 5 Salomão, 6 Isaías, 7 Mateus, 8 João, 9 Ilha de Moçambique, 10 Cabeça do Velho, 11 Chinhamapere, 12 Fortaleza de São Sebastião. Os nomes estão em `MESAS` (index.html) e `NOMES` (gerar.html).
 - `l` · número de lugares (opcional, por defeito 2)
 
 ## Gestão de convidados (gerar.html)

@@ -87,7 +87,7 @@ textarea{min-height:170px;resize:vertical}
 .mesa{background:var(--white);border:1px solid var(--line);border-radius:16px;padding:16px}
 .mesa.vazia{opacity:.7}
 .mesa-cab{display:flex;justify-content:space-between;align-items:baseline;gap:8px}
-.mesa-cab h3{font-family:var(--serif);font-weight:500;font-size:24px;color:var(--forest)}
+.mesa-cab h3{font-family:var(--serif);font-weight:500;font-size:22px;line-height:1.15;color:var(--forest)}
 .mesa-cab span{font-size:13px;color:var(--muted);white-space:nowrap}
 .ocup{height:6px;background:var(--mint);border-radius:9px;margin:10px 0 12px;overflow:hidden}
 .ocup i{display:block;height:100%;background:var(--green);border-radius:9px}
@@ -167,7 +167,7 @@ textarea{min-height:170px;resize:vertical}
     </section>
 
     <div class="barra">
-      <input type="search" id="procura" placeholder="Procurar por nome, telefone ou mesa">
+      <input type="search" id="procura" placeholder="Procurar por nome, telefone ou mesa (ex.: Zambeze)">
     </div>
     <div class="barra filtros" id="filtros">
       <button class="on" data-f="todos" type="button">Todos</button>
@@ -183,7 +183,7 @@ textarea{min-height:170px;resize:vertical}
   <div id="aba-mesas" class="oculto">
     <div class="cartao">
       <h2>As 12 mesas</h2>
-      <p class="sub">Quem está em cada mesa. Cada convidado ocupa 2 lugares.</p>
+      <p class="sub">Rios, autores bíblicos e monumentos históricos. Cada convidado ocupa 2 lugares.</p>
       <div class="linha-botoes" style="align-items:center">
         <label for="lotacao" style="margin:0">Lugares por mesa</label>
         <input type="number" id="lotacao" min="1" max="50" inputmode="numeric" style="width:90px">
@@ -286,6 +286,12 @@ textarea{min-height:170px;resize:vertical}
   var BASE = "https://carlitosrafael5-spec.github.io/elsa-moises/";
   var MODELO = "Olá {nome}!\n\nA Elsa e o Moisés têm a alegria de vos convidar para o seu casamento, no dia 28 de Novembro de 2026, em Chimoio.\n\nO vosso convite está aqui:\n{link}\n\nContamos convosco!";
   var LUGARES = 2, MESAS = 12;
+  var NOMES = {
+    1:["Zambeze","Rio"], 2:["Púnguè","Rio"], 3:["Revué","Rio"], 4:["Limpopo","Rio"],
+    5:["Salomão","Autor bíblico"], 6:["Isaías","Autor bíblico"], 7:["Mateus","Autor bíblico"], 8:["João","Autor bíblico"],
+    9:["Ilha de Moçambique","Monumento histórico"], 10:["Cabeça do Velho","Monumento histórico"], 11:["Chinhamapere","Monumento histórico"], 12:["Fortaleza de São Sebastião","Monumento histórico"]
+  };
+  function nomeMesa(m){ return NOMES[m] ? NOMES[m][0] : "Mesa " + m; }
 
   /* ---------- Dados ---------- */
   var d = {convidados:[], modelo:MODELO, base:BASE, lotacao:10, ultimaCopia:null};
@@ -334,7 +340,7 @@ textarea{min-height:170px;resize:vertical}
     var sel = $("fMesa"), v = sel.value, h = '<option value="">Escolher mais tarde</option>';
     for (var i = 1; i <= MESAS; i++) {
       var p = naMesa(String(i)).length * LUGARES;
-      h += '<option value="' + i + '">Mesa ' + i + " (" + p + " de " + d.lotacao + " lugares)</option>";
+      h += '<option value="' + i + '">' + i + ". " + nomeMesa(i) + " (" + p + " de " + d.lotacao + " lugares)</option>";
     }
     sel.innerHTML = h; sel.value = v;
   }
@@ -364,10 +370,10 @@ textarea{min-height:170px;resize:vertical}
   function verifica(){
     var n = norm($("fNome").value), t = limpaTel($("fTel").value), m = $("fMesa").value;
     var r = d.convidados.find(function(c){ return c.id !== editar && ((n && norm(c.nome) === n) || (t.length > 8 && c.tel === t)); });
-    if (r) { aviso("Atenção: já existe \"" + r.nome + "\"" + (r.mesa ? " na Mesa " + r.mesa : "") + (r.enviado ? ", com convite já enviado." : ", ainda sem convite enviado.")); return; }
+    if (r) { aviso("Atenção: já existe \"" + r.nome + "\"" + (r.mesa ? " na mesa " + nomeMesa(r.mesa) : "") + (r.enviado ? ", com convite já enviado." : ", ainda sem convite enviado.")); return; }
     if (m) {
       var ocup = naMesa(m).filter(function(c){ return c.id !== editar; }).length * LUGARES;
-      if (ocup + LUGARES > d.lotacao) { aviso("A Mesa " + m + " já tem " + ocup + " de " + d.lotacao + " lugares ocupados."); return; }
+      if (ocup + LUGARES > d.lotacao) { aviso("A mesa " + nomeMesa(m) + " já tem " + ocup + " de " + d.lotacao + " lugares ocupados."); return; }
     }
     aviso("");
   }
@@ -384,7 +390,7 @@ textarea{min-height:170px;resize:vertical}
       else toast("Alterações guardadas");
     } else {
       d.convidados.unshift({id:novoId(), nome:nome, tel:tel, mesa:mesa, curto:"", enviado:null, resposta:"", criado:Date.now()});
-      toast(nome + " adicionado" + (mesa ? " à Mesa " + mesa : ""));
+      toast(nome + " adicionado" + (mesa ? " à mesa " + nomeMesa(mesa) : ""));
     }
     guardar(); limparForm(); desenha(); $("fNome").focus();
   });
@@ -413,7 +419,7 @@ textarea{min-height:170px;resize:vertical}
       if (filtro === "env" && !c.enviado) return false;
       if (filtro === "conf" && c.resposta !== "sim") return false;
       if (filtro === "semmesa" && c.mesa) return false;
-      if (q && (norm(c.nome) + " " + c.tel + " mesa " + c.mesa).indexOf(q) < 0) return false;
+      if (q && (norm(c.nome) + " " + c.tel + " mesa " + c.mesa + " " + norm(c.mesa ? nomeMesa(c.mesa) : "")).indexOf(q) < 0) return false;
       return true;
     });
     if (!l.length) { $("lista").innerHTML = '<div class="vazio">Nenhum convidado encontrado.</div>'; return; }
@@ -422,7 +428,7 @@ textarea{min-height:170px;resize:vertical}
         '<div class="conv-cab">' +
           (c.mesa ? '<div class="conv-mesa"><small>Mesa</small><b>' + esc(c.mesa) + "</b></div>" : '<div class="conv-mesa sem"><small>Sem</small><small>mesa</small></div>') +
           '<div class="conv-info"><h3>' + esc(c.nome) + "</h3>" +
-            "<p>" + (c.tel ? esc(mostraTel(c.tel)) : "Sem telefone") + " · 2 pessoas</p>" + estadoHtml(c) + "</div>" +
+            "<p>" + (c.mesa ? "Mesa <b>" + esc(nomeMesa(c.mesa)) + "</b> · " : "") + (c.tel ? esc(mostraTel(c.tel)) : "Sem telefone") + " · 2 pessoas</p>" + estadoHtml(c) + "</div>" +
         "</div>" +
         '<div class="conv-acoes">' +
           '<button class="btn ' + (c.enviado ? "btn-leve" : "btn-wa") + '" data-a="enviar" type="button">' + (c.enviado ? "Enviar de novo" : "Enviar convite") + "</button>" +
@@ -467,7 +473,7 @@ textarea{min-height:170px;resize:vertical}
     }
     atual = c;
     $("jTitulo").textContent = "Enviar convite a " + c.nome;
-    $("jSub").textContent = "Mesa " + c.mesa + " · " + (c.tel ? mostraTel(c.tel) : "sem telefone, vai escolher o contacto no WhatsApp");
+    $("jSub").textContent = "Mesa " + nomeMesa(c.mesa) + " · " + (c.tel ? mostraTel(c.tel) : "sem telefone, vai escolher o contacto no WhatsApp");
     $("jLongo").textContent = linkLongo(c);
     $("jCurto").value = c.curto || "";
     $("janela").classList.remove("oculto");
@@ -508,7 +514,8 @@ textarea{min-height:170px;resize:vertical}
     for (var i = 1; i <= MESAS; i++) {
       var cs = naMesa(String(i)).sort(function(a,b){ return a.nome.localeCompare(b.nome); });
       var p = cs.length * LUGARES, pct = Math.min(100, Math.round(p / d.lotacao * 100)), livres = d.lotacao - p;
-      h += '<div class="mesa' + (cs.length ? "" : " vazia") + '"><div class="mesa-cab"><h3>Mesa ' + i + "</h3><span>" + p + " de " + d.lotacao + " lugares</span></div>" +
+      h += '<div class="mesa' + (cs.length ? "" : " vazia") + '"><div class="mesa-cab"><h3>' + esc(nomeMesa(i)) + "</h3><span>" + p + " de " + d.lotacao + "</span></div>" +
+        '<p class="livre" style="margin-top:-2px">Mesa ' + i + " · " + NOMES[i][1] + "</p>" +
         '<div class="ocup' + (p > d.lotacao ? " cheia" : "") + '"><i style="width:' + pct + '%"></i></div>' +
         (cs.length ? "<ul>" + cs.map(function(c){ return "<li>" + esc(c.nome) + "<em>" + (c.resposta === "sim" ? "confirmou" : c.resposta === "nao" ? "não vem" : c.enviado ? "enviado" : "por enviar") + "</em></li>"; }).join("") + "</ul>" : "") +
         (livres > 0 ? '<p class="livre">' + livres + (livres === 1 ? " lugar livre" : " lugares livres") + "</p>" : livres < 0 ? '<p class="livre" style="color:var(--warn)">Passa ' + (-livres) + " lugares do limite</p>" : '<p class="livre">Mesa completa</p>') + "</div>";
@@ -554,7 +561,7 @@ textarea{min-height:170px;resize:vertical}
   $("excel").onclick = function(){
     var linhas = [["Nome","Telefone","Mesa","Pessoas","Estado","Enviado em","Resposta","Link do convite"]];
     d.convidados.slice().sort(function(a,b){ return (+a.mesa || 99) - (+b.mesa || 99) || a.nome.localeCompare(b.nome); }).forEach(function(c){
-      linhas.push([c.nome, c.tel ? mostraTel(c.tel) : "", c.mesa ? "Mesa " + c.mesa : "", LUGARES, c.enviado ? "Enviado" : "Por enviar", c.enviado ? data(c.enviado) : "", c.resposta === "sim" ? "Confirmou" : c.resposta === "nao" ? "Não vem" : "", c.curto || linkLongo(c)]);
+      linhas.push([c.nome, c.tel ? mostraTel(c.tel) : "", c.mesa ? c.mesa + ". " + nomeMesa(c.mesa) : "", LUGARES, c.enviado ? "Enviado" : "Por enviar", c.enviado ? data(c.enviado) : "", c.resposta === "sim" ? "Confirmou" : c.resposta === "nao" ? "Não vem" : "", c.curto || linkLongo(c)]);
     });
     descarrega("convidados-elsa-moises.csv", "﻿" + linhas.map(function(r){ return r.map(function(v){ return '"' + String(v).replace(/"/g, '""') + '"'; }).join(";"); }).join("\r\n"), "text/csv;charset=utf-8");
   };
