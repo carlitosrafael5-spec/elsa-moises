@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="pt-MZ">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Links dos Convidados</title>
+<style>
+:root{--forest:#23352a;--green:#2f4a38;--gold:#a3823f;--ivory:#f6f1e7;--paper:#fff;--ink:#27302a;--muted:#6b7268;--line:#e2ddd2}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--ivory);color:var(--ink);font:15px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;padding:20px 16px 60px}
+.wrap{max-width:980px;margin:0 auto}
+h1{font:500 26px Georgia,serif;color:var(--forest)}
+.sub{color:var(--muted);margin-top:4px}
+.caixa{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:18px;margin-top:18px}
+label{display:block;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:12px 0 6px}
+label:first-child{margin-top:0}
+input,textarea{width:100%;font:inherit;padding:10px 12px;border:1px solid var(--line);border-radius:8px;background:#fcfbf8}
+textarea{min-height:130px;font-family:ui-monospace,Consolas,monospace;font-size:14px}
+.dica{font-size:13px;color:var(--muted);margin-top:6px}
+.acoes{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+button,.b{font:inherit;font-size:14px;padding:9px 14px;border-radius:8px;border:1px solid var(--green);background:var(--green);color:#fff;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:6px;white-space:nowrap}
+.b2{background:#fff;color:var(--green)}
+.wa{background:#1f8f4e;border-color:#1f8f4e}
+table{width:100%;border-collapse:collapse;margin-top:6px}
+th,td{text-align:left;padding:10px 8px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);font-weight:500}
+td .longo{font-size:12px;color:var(--muted);word-break:break-all}
+td input{padding:7px 9px;font-size:14px}
+.ok{color:#1f8f4e;font-size:12px}
+.slug{font-family:ui-monospace,Consolas,monospace;font-size:13px}
+@media (max-width:760px){
+  table,thead,tbody,tr,td{display:block}
+  thead{display:none}
+  tr{border:1px solid var(--line);border-radius:10px;padding:10px;margin-bottom:10px;background:#fff}
+  td{border:0;padding:5px 0}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Links dos convidados</h1>
+  <p class="sub">Elsa &amp; Moisés · gera o link de cada convidado, a mensagem e o envio por WhatsApp. Os dados ficam só neste telemóvel ou computador.</p>
+
+  <div class="caixa">
+    <label for="base">Endereço do convite</label>
+    <input id="base" value="https://carlitosrafael5-spec.github.io/elsa-moises/">
+    <label for="lista">Convidados (um por linha: Nome ; lugares ; telefone)</label>
+    <textarea id="lista" placeholder="Família Macuácua ; 4 ; 258841234567&#10;Ana Sitoe ; 2 ; 258861112233&#10;Dr. Júlio Mondlane ; 1"></textarea>
+    <p class="dica">Lugares e telefone são opcionais. O telefone deve ir com o 258 à frente.</p>
+    <label for="modelo">Mensagem de WhatsApp</label>
+    <textarea id="modelo" style="min-height:110px;font-family:inherit"></textarea>
+    <p class="dica">Use {nome} e {link}. O {link} usa o link curto se o tiver colado, senão o link completo.</p>
+    <div class="acoes">
+      <button id="gerar" type="button">Gerar links</button>
+      <button id="csv" class="b2" type="button">Exportar CSV</button>
+      <a class="b b2" href="https://go.mz/" target="_blank" rel="noopener">Abrir go.mz</a>
+    </div>
+  </div>
+
+  <div class="caixa" id="res" hidden>
+    <table>
+      <thead><tr><th>Convidado</th><th>Link curto sugerido</th><th>Link curto (go.mz)</th><th>Enviar</th></tr></thead>
+      <tbody id="tb"></tbody>
+    </table>
+  </div>
+</div>
+
+<script>
+(function(){
+  var $ = function(id){ return document.getElementById(id); };
+  var K = "convite-em-v1";
+  var MODELO = "Olá {nome}!\n\nA Elsa e o Moisés têm a alegria de vos convidar para o seu casamento, no dia 28 de Novembro de 2026, em Chimoio.\n\nO vosso convite está aqui:\n{link}\n\nContamos convosco!";
+  var est = {};
+  try { est = JSON.parse(localStorage.getItem(K)) || {}; } catch(e){}
+  $("lista").value = est.lista || "";
+  $("modelo").value = est.modelo || MODELO;
+  if (est.base) $("base").value = est.base;
+  var curtos = est.curtos || {};
+  var linhas = [];
+
+  function guardar(){
+    try { localStorage.setItem(K, JSON.stringify({lista:$("lista").value, modelo:$("modelo").value, base:$("base").value, curtos:curtos})); } catch(e){}
+  }
+  function slug(s){
+    return s.normalize("NFD").replace(/[̀-ͯ]/g,"").toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"").slice(0,30);
+  }
+  function longo(l){
+    var u = $("base").value.trim();
+    if (!/\/$/.test(u) && !/\.html$/.test(u)) u += "/";
+    return u + "?n=" + encodeURIComponent(l.nome).replace(/%20/g,"+") + (l.lug ? "&l=" + l.lug : "");
+  }
+  function mensagem(l){
+    var link = curtos[l.nome] || longo(l);
+    return $("modelo").value.replace(/\{nome\}/g, l.nome).replace(/\{link\}/g, link);
+  }
+  function esc(s){ return s.replace(/[&<>"]/g, function(c){ return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]; }); }
+
+  function gerar(){
+    guardar();
+    linhas = $("lista").value.split(/\r?\n/).map(function(t){
+      var p = t.split(";").map(function(x){ return x.trim(); });
+      if (!p[0]) return null;
+      return {nome:p[0], lug:parseInt(p[1],10) || 0, tel:(p[2]||"").replace(/\D/g,"")};
+    }).filter(Boolean);
+    var h = "";
+    linhas.forEach(function(l, i){
+      var lg = longo(l);
+      h += "<tr><td><b>" + esc(l.nome) + "</b>" + (l.lug ? " · " + l.lug + " lug." : "") +
+        '<div class="longo">' + esc(lg) + '</div>' +
+        '<button class="b2" style="margin-top:6px;padding:5px 10px;font-size:12px" data-copiar="' + i + '">Copiar link completo</button></td>' +
+        '<td class="slug">em-' + slug(l.nome) + "</td>" +
+        '<td><input data-curto="' + i + '" placeholder="https://go.mz/..." value="' + esc(curtos[l.nome] || "") + '"></td>' +
+        '<td><a class="b wa" data-wa="' + i + '" target="_blank" rel="noopener">WhatsApp</a> ' +
+        '<button class="b2" style="margin-top:6px" data-msg="' + i + '">Copiar mensagem</button></td></tr>';
+    });
+    $("tb").innerHTML = h;
+    $("res").hidden = !linhas.length;
+    actualizarWa();
+  }
+  function actualizarWa(){
+    document.querySelectorAll("[data-wa]").forEach(function(a){
+      var l = linhas[+a.dataset.wa];
+      a.href = "https://wa.me/" + l.tel + "?text=" + encodeURIComponent(mensagem(l));
+    });
+  }
+  function copiar(txt, el){
+    var feito = function(){ var o = el.textContent; el.textContent = "Copiado"; setTimeout(function(){ el.textContent = o; }, 1300); };
+    if (navigator.clipboard) navigator.clipboard.writeText(txt).then(feito);
+    else { var t = document.createElement("textarea"); t.value = txt; document.body.appendChild(t); t.select(); document.execCommand("copy"); t.remove(); feito(); }
+  }
+
+  $("gerar").onclick = gerar;
+  $("modelo").addEventListener("input", function(){ guardar(); actualizarWa(); });
+  $("tb").addEventListener("input", function(e){
+    var i = e.target.dataset.curto; if (i === undefined) return;
+    curtos[linhas[i].nome] = e.target.value.trim(); guardar(); actualizarWa();
+  });
+  $("tb").addEventListener("click", function(e){
+    var b = e.target;
+    if (b.dataset.copiar !== undefined) copiar(longo(linhas[+b.dataset.copiar]), b);
+    if (b.dataset.msg !== undefined) copiar(mensagem(linhas[+b.dataset.msg]), b);
+  });
+  $("csv").onclick = function(){
+    if (!linhas.length) gerar();
+    var c = [["Nome","Lugares","Telefone","Link completo","Link curto sugerido","Link curto"]];
+    linhas.forEach(function(l){ c.push([l.nome, l.lug || "", l.tel, longo(l), "em-" + slug(l.nome), curtos[l.nome] || ""]); });
+    var txt = "﻿" + c.map(function(r){ return r.map(function(v){ return '"' + String(v).replace(/"/g,'""') + '"'; }).join(";"); }).join("\r\n");
+    var a = document.createElement("a");
+    a.href = URL.createObjectURL(new Blob([txt], {type:"text/csv;charset=utf-8"}));
+    a.download = "convidados-elsa-moises.csv"; a.click();
+  };
+  if ($("lista").value.trim()) gerar();
+})();
+</script>
+</body>
+</html>
