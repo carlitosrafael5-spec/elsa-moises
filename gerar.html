@@ -2,182 +2,575 @@
 <html lang="pt-MZ">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="robots" content="noindex, nofollow">
-<title>Links dos Convidados</title>
+<meta name="theme-color" content="#1c4a2f">
+<title>Convidados · Elsa &amp; Moisés</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
-:root{--forest:#1c4a2f;--green:#28673f;--gold:#3d7a4e;--ivory:#f2f7f2;--paper:#fff;--ink:#27302a;--muted:#6b7268;--line:#e2ddd2}
-*{box-sizing:border-box;margin:0;padding:0}
-body{background:var(--ivory);color:var(--ink);font:15px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;padding:20px 16px 60px}
-.wrap{max-width:980px;margin:0 auto}
-h1{font:500 26px Georgia,serif;color:var(--forest)}
-.sub{color:var(--muted);margin-top:4px}
-.caixa{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:18px;margin-top:18px}
-label{display:block;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:12px 0 6px}
-label:first-child{margin-top:0}
-input,textarea{width:100%;font:inherit;padding:10px 12px;border:1px solid var(--line);border-radius:8px;background:#fcfbf8}
-textarea{min-height:130px;font-family:ui-monospace,Consolas,monospace;font-size:14px}
-.dica{font-size:13px;color:var(--muted);margin-top:6px}
-.acoes{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
-button,.b{font:inherit;font-size:14px;padding:9px 14px;border-radius:8px;border:1px solid var(--green);background:var(--green);color:#fff;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:6px;white-space:nowrap}
-.b2{background:#fff;color:var(--green)}
-.wa{background:#1f8f4e;border-color:#1f8f4e}
-table{width:100%;border-collapse:collapse;margin-top:6px}
-th,td{text-align:left;padding:10px 8px;border-bottom:1px solid var(--line);vertical-align:top}
-th{font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);font-weight:500}
-td .longo{font-size:12px;color:var(--muted);word-break:break-all}
-td input{padding:7px 9px;font-size:14px}
-.ok{color:#1f8f4e;font-size:12px}
-.slug{font-family:ui-monospace,Consolas,monospace;font-size:13px}
-@media (max-width:760px){
-  table,thead,tbody,tr,td{display:block}
-  thead{display:none}
-  tr{border:1px solid var(--line);border-radius:10px;padding:10px;margin-bottom:10px;background:#fff}
-  td{border:0;padding:5px 0}
+:root{
+  --forest:#1c4a2f;--green:#28673f;--mint:#e3efe3;--mint2:#f2f7f2;--white:#fff;
+  --ink:#1f2c23;--muted:#66756b;--line:#dce8dc;--warn:#b35c1e;--warn-bg:#fdf1e7;--red:#b3261e;
+  --serif:"Cormorant Garamond",Georgia,serif;--sans:"Jost",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
 }
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--mint2);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.5;-webkit-font-smoothing:antialiased;padding-bottom:calc(40px + env(safe-area-inset-bottom))}
+button,input,select,textarea{font:inherit;color:inherit}
+button{cursor:pointer;-webkit-tap-highlight-color:transparent}
+.oculto{display:none!important}
+
+header{background:var(--forest);color:#fff;padding:22px 16px 0;position:sticky;top:0;z-index:10}
+.topo{max-width:900px;margin:0 auto}
+header h1{font-family:var(--serif);font-weight:500;font-size:28px;line-height:1.1}
+header p{font-size:13px;opacity:.75;margin-top:2px}
+.abas{display:flex;gap:4px;margin-top:16px;overflow-x:auto}
+.abas button{background:none;border:0;color:rgba(255,255,255,.7);padding:12px 16px;font-size:15px;border-bottom:3px solid transparent;white-space:nowrap}
+.abas button.on{color:#fff;border-bottom-color:#fff;font-weight:500}
+
+main{max-width:900px;margin:0 auto;padding:18px 16px}
+.cartao{background:var(--white);border:1px solid var(--line);border-radius:16px;padding:20px;margin-bottom:16px}
+h2{font-family:var(--serif);font-weight:500;font-size:24px;color:var(--forest);line-height:1.2}
+.sub{color:var(--muted);font-size:14px;margin-top:2px}
+
+.numeros{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:16px}
+.numeros div{background:var(--white);border:1px solid var(--line);border-radius:14px;padding:12px 8px;text-align:center}
+.numeros b{display:block;font-size:26px;font-weight:400;color:var(--forest);line-height:1.1}
+.numeros span{font-size:12px;color:var(--muted)}
+@media (max-width:520px){.numeros{grid-template-columns:repeat(2,1fr)}}
+
+.campos{display:grid;grid-template-columns:2fr 1.4fr 1fr;gap:12px;margin-top:16px}
+@media (max-width:700px){.campos{grid-template-columns:1fr}}
+label{display:block;font-size:14px;font-weight:500;margin-bottom:6px}
+label small{font-weight:300;color:var(--muted)}
+input[type=text],input[type=tel],input[type=number],input[type=search],textarea,select{width:100%;border:1.5px solid var(--line);border-radius:12px;padding:13px 14px;background:var(--white);font-size:16px;outline:none;transition:border-color .2s}
+select{appearance:none;-webkit-appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%2328673f' stroke-width='2.5'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;padding-right:38px}
+input:focus,textarea:focus,select:focus{border-color:var(--green)}
+textarea{min-height:170px;resize:vertical}
+.ajuda{font-size:13px;color:var(--muted);margin-top:6px}
+.aviso{font-size:14px;color:var(--warn);background:var(--warn-bg);border-radius:10px;padding:10px 12px;margin-top:12px}
+.linha-botoes{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:10px 20px;border-radius:12px;border:1.5px solid var(--green);background:var(--white);color:var(--green);font-size:15px;font-weight:500;text-decoration:none}
+.btn svg{width:18px;height:18px;flex:none}
+.btn-principal{background:var(--green);color:#fff}
+.btn-wa{background:#1f8f4e;border-color:#1f8f4e;color:#fff}
+.btn-leve{border-color:var(--line);color:var(--ink);font-weight:400}
+.btn-perigo{border-color:#f0d3d0;color:var(--red);font-weight:400}
+.btn:active{transform:scale(.98)}
+
+.barra{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-bottom:12px}
+.barra input{flex:1 1 220px}
+.filtros{display:flex;gap:6px;flex-wrap:wrap}
+.filtros button{border:1.5px solid var(--line);background:var(--white);border-radius:999px;padding:8px 14px;font-size:14px}
+.filtros button.on{background:var(--forest);border-color:var(--forest);color:#fff}
+.conv{background:var(--white);border:1px solid var(--line);border-radius:16px;padding:16px;margin-bottom:10px}
+.conv-cab{display:flex;gap:12px;align-items:flex-start}
+.conv-mesa{flex:none;width:58px;height:58px;border-radius:14px;background:var(--mint);color:var(--forest);display:flex;flex-direction:column;align-items:center;justify-content:center;line-height:1}
+.conv-mesa.sem{background:var(--warn-bg);color:var(--warn)}
+.conv-mesa small{font-size:10px;letter-spacing:.08em;text-transform:uppercase}
+.conv-mesa b{font-size:22px;font-weight:500;margin-top:3px}
+.conv-info{flex:1;min-width:0}
+.conv-info h3{font-size:17px;font-weight:500;line-height:1.3;word-break:break-word}
+.conv-info p{font-size:14px;color:var(--muted)}
+.estado{display:inline-flex;align-items:center;gap:6px;font-size:13px;padding:3px 10px;border-radius:999px;margin-top:6px}
+.estado.por{background:var(--warn-bg);color:var(--warn)}
+.estado.env{background:var(--mint);color:var(--forest)}
+.estado.conf{background:var(--forest);color:#fff}
+.estado.nao{background:#f5e3e1;color:var(--red)}
+.conv-acoes{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.conv-acoes .btn{min-height:42px;padding:8px 14px;font-size:14px}
+.vazio{text-align:center;color:var(--muted);padding:40px 16px}
+.vazio b{display:block;font-family:var(--serif);font-size:24px;color:var(--forest);font-weight:500}
+
+.mesas{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:12px}
+.mesa{background:var(--white);border:1px solid var(--line);border-radius:16px;padding:16px}
+.mesa.vazia{opacity:.7}
+.mesa-cab{display:flex;justify-content:space-between;align-items:baseline;gap:8px}
+.mesa-cab h3{font-family:var(--serif);font-weight:500;font-size:24px;color:var(--forest)}
+.mesa-cab span{font-size:13px;color:var(--muted);white-space:nowrap}
+.ocup{height:6px;background:var(--mint);border-radius:9px;margin:10px 0 12px;overflow:hidden}
+.ocup i{display:block;height:100%;background:var(--green);border-radius:9px}
+.ocup.cheia i{background:var(--warn)}
+.mesa ul{list-style:none}
+.mesa li{display:flex;justify-content:space-between;gap:8px;font-size:14px;padding:6px 0;border-top:1px solid var(--mint)}
+.mesa li:first-child{border-top:0}
+.mesa li em{font-style:normal;font-size:12px;color:var(--muted);white-space:nowrap}
+.mesa .livre{font-size:13px;color:var(--muted)}
+
+.fundo{position:fixed;inset:0;background:rgba(15,35,22,.55);z-index:30;display:flex;align-items:flex-end;justify-content:center}
+.janela{background:var(--white);width:100%;max-width:560px;border-radius:20px 20px 0 0;padding:22px 20px calc(22px + env(safe-area-inset-bottom));max-height:92vh;overflow:auto}
+@media (min-width:640px){.fundo{align-items:center}.janela{border-radius:20px}}
+.janela h2{margin-bottom:4px}
+.passos{counter-reset:p;list-style:none;margin-top:14px}
+.passos li{counter-increment:p;position:relative;padding:0 0 16px 40px}
+.passos li::before{content:counter(p);position:absolute;left:0;top:0;width:28px;height:28px;border-radius:50%;background:var(--mint);color:var(--forest);font-weight:500;display:grid;place-items:center;font-size:14px}
+.passos p{font-size:14px;color:var(--muted);margin-bottom:8px}
+.link-box{font-size:13px;word-break:break-all;background:var(--mint2);border:1px dashed var(--line);border-radius:10px;padding:10px;margin-bottom:8px;color:var(--muted)}
+.escolhas{display:grid;gap:8px;margin-top:14px}
+
+#toast{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom));transform:translateX(-50%) translateY(30px);background:var(--forest);color:#fff;padding:12px 20px;border-radius:12px;font-size:15px;opacity:0;transition:all .25s;z-index:40;pointer-events:none;max-width:90vw;text-align:center}
+#toast.on{opacity:1;transform:translateX(-50%) translateY(0)}
 </style>
 </head>
 <body>
-<div class="wrap">
-  <h1>Links dos convidados</h1>
-  <p class="sub">Elsa &amp; Moisés · gera o link de cada convidado, a mensagem e o envio por WhatsApp. Os dados ficam só neste telemóvel ou computador.</p>
 
-  <div class="caixa">
-    <label for="base">Endereço do convite</label>
-    <input id="base" value="https://carlitosrafael5-spec.github.io/elsa-moises/">
-    <label for="lista">Convidados (um por linha: Nome ; mesa ; telefone)</label>
-    <textarea id="lista" placeholder="Família Magumisse ; 5 ; 258...&#10;Família Rafael ; Mesa de Honra"></textarea>
-    <p class="dica">Mesa e telefone podem ficar em branco. Se a mesa faltar, é perguntada no momento de copiar o link ou enviar. Defina a mesa antes de criar o link curto no go.mz, porque a mesa faz parte do link. O telefone leva o 258 à frente. Todos os convites são para 2 pessoas, sem crianças.</p>
-    <label for="modelo">Mensagem de WhatsApp</label>
-    <textarea id="modelo" style="min-height:110px;font-family:inherit"></textarea>
-    <p class="dica">Use {nome} e {link}. O {link} usa o link curto se o tiver colado, senão o link completo.</p>
-    <div class="acoes">
-      <button id="gerar" type="button">Gerar links</button>
-      <button id="csv" class="b2" type="button">Exportar CSV</button>
-      <a class="b b2" href="https://go.mz/" target="_blank" rel="noopener">Abrir go.mz</a>
+<header>
+  <div class="topo">
+    <h1>Convidados · Elsa &amp; Moisés</h1>
+    <p>28 de Novembro de 2026 · cada convite é para 2 pessoas, sem crianças</p>
+    <nav class="abas">
+      <button class="on" data-aba="convidados" type="button">Convidados</button>
+      <button data-aba="mesas" type="button">Mesas</button>
+      <button data-aba="definicoes" type="button">Definições</button>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <!-- ============ CONVIDADOS ============ -->
+  <div id="aba-convidados">
+    <div class="numeros">
+      <div><b id="nConv">0</b><span>convidados</span></div>
+      <div><b id="nPess">0</b><span>pessoas</span></div>
+      <div><b id="nEnv">0</b><span>já enviados</span></div>
+      <div><b id="nPor">0</b><span>por enviar</span></div>
+    </div>
+
+    <section class="cartao" id="formCartao">
+      <h2 id="formTitulo">Adicionar convidado</h2>
+      <p class="sub">Preencha e carregue em Guardar. Depois envie o convite na lista abaixo.</p>
+      <form id="form" autocomplete="off">
+        <div class="campos">
+          <div>
+            <label for="fNome">Nome do convidado</label>
+            <input type="text" id="fNome" placeholder="Ex.: Família Magumisse" required>
+          </div>
+          <div>
+            <label for="fTel">Telefone (WhatsApp)</label>
+            <input type="tel" id="fTel" placeholder="84 000 0000" inputmode="tel">
+          </div>
+          <div>
+            <label for="fMesa">Mesa</label>
+            <select id="fMesa"></select>
+          </div>
+        </div>
+        <div class="aviso oculto" id="aviso"></div>
+        <div class="linha-botoes">
+          <button class="btn btn-principal" type="submit" id="btnGuardar">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
+            <span>Guardar convidado</span>
+          </button>
+          <button class="btn btn-leve oculto" type="button" id="btnCancelar">Cancelar</button>
+        </div>
+      </form>
+    </section>
+
+    <div class="barra">
+      <input type="search" id="procura" placeholder="Procurar por nome, telefone ou mesa">
+    </div>
+    <div class="barra filtros" id="filtros">
+      <button class="on" data-f="todos" type="button">Todos</button>
+      <button data-f="por" type="button">Por enviar</button>
+      <button data-f="env" type="button">Enviados</button>
+      <button data-f="conf" type="button">Confirmados</button>
+      <button data-f="semmesa" type="button">Sem mesa</button>
+    </div>
+    <div id="lista"></div>
+  </div>
+
+  <!-- ============ MESAS ============ -->
+  <div id="aba-mesas" class="oculto">
+    <div class="cartao">
+      <h2>As 12 mesas</h2>
+      <p class="sub">Quem está em cada mesa. Cada convidado ocupa 2 lugares.</p>
+      <div class="linha-botoes" style="align-items:center">
+        <label for="lotacao" style="margin:0">Lugares por mesa</label>
+        <input type="number" id="lotacao" min="1" max="50" inputmode="numeric" style="width:90px">
+      </div>
+    </div>
+    <div class="mesas" id="mesas"></div>
+  </div>
+
+  <!-- ============ DEFINIÇÕES ============ -->
+  <div id="aba-definicoes" class="oculto">
+    <section class="cartao">
+      <h2>Mensagem de WhatsApp</h2>
+      <p class="sub">Texto enviado a cada convidado. {nome} é trocado pelo nome e {link} pelo link do convite.</p>
+      <textarea id="modelo" style="margin-top:14px"></textarea>
+      <div class="linha-botoes">
+        <button class="btn btn-leve" type="button" id="repor">Repor texto original</button>
+      </div>
+    </section>
+
+    <section class="cartao">
+      <h2>Cópia de segurança</h2>
+      <p class="sub">A lista fica guardada neste telemóvel ou computador. Faça uma cópia de vez em quando para não perder nada, ou para passar a lista para outro aparelho.</p>
+      <div class="linha-botoes">
+        <button class="btn btn-principal" type="button" id="copiaGuardar">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg>
+          Guardar cópia
+        </button>
+        <label class="btn" style="margin:0">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20V9M7 14l5-5 5 5M5 4h14"/></svg>
+          Recuperar cópia
+          <input type="file" id="copiaAbrir" accept=".json,application/json" class="oculto">
+        </label>
+        <button class="btn btn-leve" type="button" id="excel">Exportar para Excel</button>
+      </div>
+      <p class="ajuda" id="ultimaCopia"></p>
+    </section>
+
+    <section class="cartao">
+      <h2>Endereço do convite</h2>
+      <p class="sub">Só muda se o convite passar para outro endereço.</p>
+      <input type="text" id="base" style="margin-top:14px">
+    </section>
+  </div>
+</main>
+
+<!-- Janela de envio -->
+<div class="fundo oculto" id="janela">
+  <div class="janela" role="dialog" aria-modal="true">
+    <h2 id="jTitulo">Enviar convite</h2>
+    <p class="sub" id="jSub"></p>
+    <ol class="passos">
+      <li>
+        <p><b>Link curto (opcional).</b> Copie o link, abra o go.mz, crie o link curto e cole-o aqui. Se não quiser, passe ao passo 2.</p>
+        <div class="link-box" id="jLongo"></div>
+        <div class="linha-botoes" style="margin:0 0 10px">
+          <button class="btn btn-leve" type="button" id="jCopiar">Copiar link</button>
+          <a class="btn btn-leve" href="https://go.mz/" target="_blank" rel="noopener">Abrir go.mz</a>
+        </div>
+        <input type="text" id="jCurto" placeholder="Cole aqui o link curto, ex.: https://go.mz/...">
+      </li>
+      <li>
+        <p><b>Enviar.</b> O WhatsApp abre com a mensagem pronta. Só falta carregar em enviar.</p>
+        <div class="linha-botoes" style="margin:0">
+          <button class="btn btn-wa" type="button" id="jWa">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 00-8.6 15.1L2 22l5-1.3A10 10 0 1012 2zm0 18.2a8.2 8.2 0 01-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1112 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 01-3.3-2.9c-.3-.4.2-.4.7-1.4.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 00-.7.3 3 3 0 00-.9 2.2 5.2 5.2 0 001.1 2.7 11.8 11.8 0 004.5 4c1.7.7 2.3.8 3.2.7a2.7 2.7 0 001.7-1.2 2.2 2.2 0 00.2-1.2c-.1-.1-.3-.2-.5-.3z"/></svg>
+            Enviar por WhatsApp
+          </button>
+          <button class="btn btn-leve" type="button" id="jMsg">Copiar mensagem</button>
+        </div>
+      </li>
+    </ol>
+    <div class="linha-botoes">
+      <button class="btn btn-leve" type="button" id="jFechar" style="width:100%">Fechar</button>
     </div>
   </div>
+</div>
 
-  <div class="caixa" id="res" hidden>
-    <table>
-      <thead><tr><th>Convidado</th><th>Mesa</th><th>Link curto sugerido</th><th>Link curto (go.mz)</th><th>Enviar</th></tr></thead>
-      <tbody id="tb"></tbody>
-    </table>
+<!-- Janela de resposta -->
+<div class="fundo oculto" id="janelaR">
+  <div class="janela" role="dialog" aria-modal="true">
+    <h2 id="rTitulo">Resposta</h2>
+    <p class="sub">A confirmação chega por WhatsApp. Registe aqui o que o convidado respondeu.</p>
+    <div class="escolhas">
+      <button class="btn btn-principal" type="button" data-r="sim">Confirmou presença</button>
+      <button class="btn" type="button" data-r="nao">Não vem</button>
+      <button class="btn btn-leve" type="button" data-r="">Ainda não respondeu</button>
+    </div>
+    <div class="linha-botoes">
+      <button class="btn btn-leve" type="button" data-r="fechar" style="width:100%">Fechar</button>
+    </div>
   </div>
 </div>
+
+<div id="toast"></div>
 
 <script>
 (function(){
   var $ = function(id){ return document.getElementById(id); };
-  var K = "convite-em-v1";
+  var CHAVE = "gestao-convites-elsa-moises";
+  var BASE = "https://carlitosrafael5-spec.github.io/elsa-moises/";
   var MODELO = "Olá {nome}!\n\nA Elsa e o Moisés têm a alegria de vos convidar para o seu casamento, no dia 28 de Novembro de 2026, em Chimoio.\n\nO vosso convite está aqui:\n{link}\n\nContamos convosco!";
-  var est = {};
-  try { est = JSON.parse(localStorage.getItem(K)) || {}; } catch(e){}
-  $("lista").value = est.lista || "";
-  $("modelo").value = est.modelo || MODELO;
-  if (est.base) $("base").value = est.base;
-  var curtos = est.curtos || {};
-  var mesas = est.mesas || {};
-  var linhas = [];
+  var LUGARES = 2, MESAS = 12;
 
+  /* ---------- Dados ---------- */
+  var d = {convidados:[], modelo:MODELO, base:BASE, lotacao:10, ultimaCopia:null};
+  try { var g = JSON.parse(localStorage.getItem(CHAVE)); if (g && g.convidados) d = Object.assign(d, g); } catch(e){}
   function guardar(){
-    try { localStorage.setItem(K, JSON.stringify({lista:$("lista").value, modelo:$("modelo").value, base:$("base").value, curtos:curtos, mesas:mesas})); } catch(e){}
+    try { localStorage.setItem(CHAVE, JSON.stringify(d)); }
+    catch(e){ alert("Não foi possível guardar neste navegador. Faça já uma cópia de segurança em Definições."); }
   }
-  function slug(s){
-    return s.normalize("NFD").replace(/[̀-ͯ]/g,"").toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"").slice(0,30);
-  }
-  function longo(l){
-    var u = $("base").value.trim();
-    if (!/\/$/.test(u) && !/\.html$/.test(u)) u += "/";
-    return u + "?n=" + encodeURIComponent(l.nome).replace(/%20/g,"+") + (l.mesa ? "&m=" + encodeURIComponent(l.mesa).replace(/%20/g,"+") : "");
-  }
-  function pedirMesa(i){
-    var l = linhas[i];
-    if (l.mesa) return true;
-    var r = prompt("Qual é a mesa de " + l.nome + "?\n(número ou nome, ex.: 7 ou Mesa de Honra)", "");
-    if (r === null) return false;
-    l.mesa = r.trim(); mesas[l.nome] = l.mesa; guardar();
-    var inp = document.querySelector('[data-mesa="' + i + '"]'); if (inp) inp.value = l.mesa;
-    var lg = document.querySelector('[data-longo="' + i + '"]'); if (lg) lg.textContent = longo(l);
-    actualizarWa();
-    return !!l.mesa;
-  }
-  function mensagem(l){
-    var link = curtos[l.nome] || longo(l);
-    return $("modelo").value.replace(/\{nome\}/g, l.nome).replace(/\{link\}/g, link);
-  }
-  function esc(s){ return s.replace(/[&<>"]/g, function(c){ return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]; }); }
+  function novoId(){ return Date.now().toString(36) + Math.random().toString(36).slice(2,6); }
 
-  function gerar(){
-    guardar();
-    linhas = $("lista").value.split(/\r?\n/).map(function(t){
-      var p = t.split(";").map(function(x){ return x.trim(); });
-      if (!p[0]) return null;
-      var m = p[1] || mesas[p[0]] || "";
-      if (p[1]) mesas[p[0]] = p[1];
-      return {nome:p[0], mesa:m, tel:(p[2]||"").replace(/\D/g,"")};
-    }).filter(Boolean);
-    var h = "";
-    linhas.forEach(function(l, i){
-      var lg = longo(l);
-      h += "<tr><td><b>" + esc(l.nome) + "</b>" +
-        '<div class="longo" data-longo="' + i + '">' + esc(lg) + '</div>' +
-        '<button class="b2" style="margin-top:6px;padding:5px 10px;font-size:12px" data-copiar="' + i + '">Copiar link completo</button></td>' +
-        '<td><input data-mesa="' + i + '" placeholder="Mesa" style="max-width:110px" value="' + esc(l.mesa) + '"></td>' +
-        '<td class="slug">em-' + slug(l.nome) + "</td>" +
-        '<td><input data-curto="' + i + '" placeholder="https://go.mz/..." value="' + esc(curtos[l.nome] || "") + '"></td>' +
-        '<td><a class="b wa" data-wa="' + i + '" target="_blank" rel="noopener">WhatsApp</a> ' +
-        '<button class="b2" style="margin-top:6px" data-msg="' + i + '">Copiar mensagem</button></td></tr>';
-    });
-    $("tb").innerHTML = h;
-    $("res").hidden = !linhas.length;
-    actualizarWa();
+  /* ---------- Utilidades ---------- */
+  function esc(s){ return String(s == null ? "" : s).replace(/[&<>"']/g, function(c){ return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]; }); }
+  function limpaTel(t){
+    var n = String(t || "").replace(/\D/g, "");
+    if (n.indexOf("00") === 0) n = n.slice(2);
+    if (n.length === 9 && /^[82]/.test(n)) n = "258" + n;
+    return n;
   }
-  function actualizarWa(){
-    document.querySelectorAll("[data-wa]").forEach(function(a){
-      var l = linhas[+a.dataset.wa];
-      a.href = "https://wa.me/" + l.tel + "?text=" + encodeURIComponent(mensagem(l));
-    });
+  function mostraTel(n){
+    if (!n) return "";
+    var m = n.match(/^258(\d{2})(\d{3})(\d{4})$/);
+    return m ? "+258 " + m[1] + " " + m[2] + " " + m[3] : "+" + n;
   }
-  function copiar(txt, el){
-    var feito = function(){ var o = el.textContent; el.textContent = "Copiado"; setTimeout(function(){ el.textContent = o; }, 1300); };
-    if (navigator.clipboard) navigator.clipboard.writeText(txt).then(feito);
-    else { var t = document.createElement("textarea"); t.value = txt; document.body.appendChild(t); t.select(); document.execCommand("copy"); t.remove(); feito(); }
+  function norm(s){ return String(s || "").normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase().trim(); }
+  function linkLongo(c){
+    var u = d.base.trim(); if (!/\/$/.test(u) && !/\.html$/.test(u)) u += "/";
+    return u + "?n=" + encodeURIComponent(c.nome).replace(/%20/g, "+") + (c.mesa ? "&m=" + c.mesa : "");
+  }
+  function mensagem(c){ return d.modelo.replace(/\{nome\}/g, c.nome).replace(/\{link\}/g, c.curto || linkLongo(c)); }
+  function data(ts){
+    var x = new Date(ts);
+    return x.toLocaleDateString("pt-PT", {day:"2-digit", month:"2-digit"}) + " às " + x.toLocaleTimeString("pt-PT", {hour:"2-digit", minute:"2-digit"});
+  }
+  var tt;
+  function toast(t){ var e = $("toast"); e.textContent = t; e.classList.add("on"); clearTimeout(tt); tt = setTimeout(function(){ e.classList.remove("on"); }, 2400); }
+  function aviso(t){ var a = $("aviso"); a.textContent = t; a.classList.toggle("oculto", !t); }
+  function copiar(t, msg){
+    function ok(){ toast(msg || "Copiado"); }
+    function velho(){ var x = document.createElement("textarea"); x.value = t; x.style.position = "fixed"; x.style.opacity = "0"; document.body.appendChild(x); x.select(); try { document.execCommand("copy"); ok(); } catch(e){ prompt("Copie o texto:", t); } x.remove(); }
+    if (navigator.clipboard && window.isSecureContext) navigator.clipboard.writeText(t).then(ok, velho); else velho();
+  }
+  function naMesa(m){ return d.convidados.filter(function(c){ return c.mesa === m; }); }
+
+  /* ---------- Lista de mesas no formulário ---------- */
+  function opcoesMesa(){
+    var sel = $("fMesa"), v = sel.value, h = '<option value="">Escolher mais tarde</option>';
+    for (var i = 1; i <= MESAS; i++) {
+      var p = naMesa(String(i)).length * LUGARES;
+      h += '<option value="' + i + '">Mesa ' + i + " (" + p + " de " + d.lotacao + " lugares)</option>";
+    }
+    sel.innerHTML = h; sel.value = v;
   }
 
-  $("gerar").onclick = gerar;
-  $("modelo").addEventListener("input", function(){ guardar(); actualizarWa(); });
-  $("tb").addEventListener("input", function(e){
-    var mi = e.target.dataset.mesa;
-    if (mi !== undefined) {
-      var l = linhas[mi]; l.mesa = e.target.value.trim(); mesas[l.nome] = l.mesa; guardar();
-      document.querySelector('[data-longo="' + mi + '"]').textContent = longo(l);
-      actualizarWa(); return;
-    }
-    var i = e.target.dataset.curto; if (i === undefined) return;
-    curtos[linhas[i].nome] = e.target.value.trim(); guardar(); actualizarWa();
+  /* ---------- Abas ---------- */
+  document.querySelectorAll(".abas button").forEach(function(b){
+    b.onclick = function(){
+      document.querySelectorAll(".abas button").forEach(function(x){ x.classList.toggle("on", x === b); });
+      ["convidados","mesas","definicoes"].forEach(function(a){ $("aba-" + a).classList.toggle("oculto", a !== b.dataset.aba); });
+      if (b.dataset.aba === "mesas") desenhaMesas();
+      window.scrollTo(0, 0);
+    };
   });
-  $("tb").addEventListener("click", function(e){
-    var b = e.target;
-    if (b.dataset.copiar !== undefined) { if (pedirMesa(+b.dataset.copiar)) copiar(longo(linhas[+b.dataset.copiar]), b); }
-    if (b.dataset.msg !== undefined) { if (pedirMesa(+b.dataset.msg)) copiar(mensagem(linhas[+b.dataset.msg]), b); }
-    if (b.dataset.wa !== undefined) {
-      e.preventDefault();
-      if (!pedirMesa(+b.dataset.wa)) return;
-      var w = window.open(b.href, "_blank");
-      if (!w) location.href = b.href;
+
+  /* ---------- Formulário ---------- */
+  var editar = null;
+  function limparForm(){
+    editar = null; $("form").reset(); aviso("");
+    $("formTitulo").textContent = "Adicionar convidado";
+    $("btnGuardar").querySelector("span").textContent = "Guardar convidado";
+    $("btnCancelar").classList.add("oculto");
+  }
+  $("btnCancelar").onclick = limparForm;
+  $("fNome").addEventListener("input", verifica);
+  $("fTel").addEventListener("input", verifica);
+  $("fMesa").addEventListener("change", verifica);
+  function verifica(){
+    var n = norm($("fNome").value), t = limpaTel($("fTel").value), m = $("fMesa").value;
+    var r = d.convidados.find(function(c){ return c.id !== editar && ((n && norm(c.nome) === n) || (t.length > 8 && c.tel === t)); });
+    if (r) { aviso("Atenção: já existe \"" + r.nome + "\"" + (r.mesa ? " na Mesa " + r.mesa : "") + (r.enviado ? ", com convite já enviado." : ", ainda sem convite enviado.")); return; }
+    if (m) {
+      var ocup = naMesa(m).filter(function(c){ return c.id !== editar; }).length * LUGARES;
+      if (ocup + LUGARES > d.lotacao) { aviso("A Mesa " + m + " já tem " + ocup + " de " + d.lotacao + " lugares ocupados."); return; }
+    }
+    aviso("");
+  }
+  $("form").addEventListener("submit", function(e){
+    e.preventDefault();
+    var nome = $("fNome").value.trim().replace(/\s+/g, " ");
+    if (!nome) { toast("Escreva o nome do convidado"); $("fNome").focus(); return; }
+    var tel = limpaTel($("fTel").value), mesa = $("fMesa").value;
+    if (editar) {
+      var c = d.convidados.find(function(x){ return x.id === editar; });
+      var mudou = c.nome !== nome || c.mesa !== mesa;
+      c.nome = nome; c.tel = tel; c.mesa = mesa;
+      if (mudou && c.curto) { c.curto = ""; toast("Guardado. Crie um novo link curto, o antigo já não serve."); }
+      else toast("Alterações guardadas");
+    } else {
+      d.convidados.unshift({id:novoId(), nome:nome, tel:tel, mesa:mesa, curto:"", enviado:null, resposta:"", criado:Date.now()});
+      toast(nome + " adicionado" + (mesa ? " à Mesa " + mesa : ""));
+    }
+    guardar(); limparForm(); desenha(); $("fNome").focus();
+  });
+
+  /* ---------- Lista ---------- */
+  var filtro = "todos";
+  $("filtros").addEventListener("click", function(e){
+    var b = e.target.closest("button"); if (!b) return;
+    filtro = b.dataset.f;
+    this.querySelectorAll("button").forEach(function(x){ x.classList.toggle("on", x === b); });
+    desenhaLista();
+  });
+  $("procura").addEventListener("input", desenhaLista);
+
+  function estadoHtml(c){
+    if (c.resposta === "sim") return '<span class="estado conf">Confirmou presença</span>';
+    if (c.resposta === "nao") return '<span class="estado nao">Não vem</span>';
+    if (c.enviado) return '<span class="estado env">Convite enviado · ' + data(c.enviado) + "</span>";
+    return '<span class="estado por">Por enviar</span>';
+  }
+  function desenhaLista(){
+    if (!d.convidados.length) { $("lista").innerHTML = '<div class="vazio"><b>Ainda sem convidados</b>Use o formulário acima para adicionar o primeiro.</div>'; return; }
+    var q = norm($("procura").value);
+    var l = d.convidados.filter(function(c){
+      if (filtro === "por" && c.enviado) return false;
+      if (filtro === "env" && !c.enviado) return false;
+      if (filtro === "conf" && c.resposta !== "sim") return false;
+      if (filtro === "semmesa" && c.mesa) return false;
+      if (q && (norm(c.nome) + " " + c.tel + " mesa " + c.mesa).indexOf(q) < 0) return false;
+      return true;
+    });
+    if (!l.length) { $("lista").innerHTML = '<div class="vazio">Nenhum convidado encontrado.</div>'; return; }
+    $("lista").innerHTML = l.map(function(c){
+      return '<article class="conv" data-id="' + c.id + '">' +
+        '<div class="conv-cab">' +
+          (c.mesa ? '<div class="conv-mesa"><small>Mesa</small><b>' + esc(c.mesa) + "</b></div>" : '<div class="conv-mesa sem"><small>Sem</small><small>mesa</small></div>') +
+          '<div class="conv-info"><h3>' + esc(c.nome) + "</h3>" +
+            "<p>" + (c.tel ? esc(mostraTel(c.tel)) : "Sem telefone") + " · 2 pessoas</p>" + estadoHtml(c) + "</div>" +
+        "</div>" +
+        '<div class="conv-acoes">' +
+          '<button class="btn ' + (c.enviado ? "btn-leve" : "btn-wa") + '" data-a="enviar" type="button">' + (c.enviado ? "Enviar de novo" : "Enviar convite") + "</button>" +
+          (c.enviado ? '<button class="btn btn-leve" data-a="resposta" type="button">' + (c.resposta ? "Mudar resposta" : "Registar resposta") + "</button>" : "") +
+          '<button class="btn btn-leve" data-a="ver" type="button">Ver convite</button>' +
+          '<button class="btn btn-leve" data-a="editar" type="button">Editar</button>' +
+          '<button class="btn btn-perigo" data-a="apagar" type="button">Apagar</button>' +
+        "</div></article>";
+    }).join("");
+  }
+  $("lista").addEventListener("click", function(e){
+    var b = e.target.closest("button[data-a]"); if (!b) return;
+    var c = d.convidados.find(function(x){ return x.id === b.closest(".conv").dataset.id; });
+    var a = b.dataset.a;
+    if (a === "enviar") abreJanela(c);
+    if (a === "ver") window.open(linkLongo(c), "_blank");
+    if (a === "resposta") abreResposta(c);
+    if (a === "editar") {
+      editar = c.id; $("fNome").value = c.nome; $("fTel").value = c.tel ? mostraTel(c.tel) : ""; $("fMesa").value = c.mesa;
+      $("formTitulo").textContent = "Editar " + c.nome;
+      $("btnGuardar").querySelector("span").textContent = "Guardar alterações";
+      $("btnCancelar").classList.remove("oculto"); aviso("");
+      $("formCartao").scrollIntoView({behavior:"smooth", block:"start"});
+    }
+    if (a === "apagar" && confirm("Apagar " + c.nome + " da lista?")) {
+      d.convidados = d.convidados.filter(function(x){ return x !== c; }); guardar(); desenha(); toast("Apagado");
     }
   });
-  $("csv").onclick = function(){
-    if (!linhas.length) gerar();
-    var c = [["Nome","Mesa","Telefone","Link completo","Link curto sugerido","Link curto"]];
-    linhas.forEach(function(l){ c.push([l.nome, l.mesa, l.tel, longo(l), "em-" + slug(l.nome), curtos[l.nome] || ""]); });
-    var txt = "﻿" + c.map(function(r){ return r.map(function(v){ return '"' + String(v).replace(/"/g,'""') + '"'; }).join(";"); }).join("\r\n");
-    var a = document.createElement("a");
-    a.href = URL.createObjectURL(new Blob([txt], {type:"text/csv;charset=utf-8"}));
-    a.download = "convidados-elsa-moises.csv"; a.click();
+
+  /* ---------- Janela de envio ---------- */
+  var atual = null;
+  function abreJanela(c){
+    if (!c.mesa) {
+      toast("Escolha primeiro a mesa de " + c.nome);
+      editar = c.id; $("fNome").value = c.nome; $("fTel").value = c.tel ? mostraTel(c.tel) : ""; $("fMesa").value = "";
+      $("formTitulo").textContent = "Escolha a mesa de " + c.nome;
+      $("btnGuardar").querySelector("span").textContent = "Guardar alterações";
+      $("btnCancelar").classList.remove("oculto");
+      $("formCartao").scrollIntoView({behavior:"smooth", block:"start"});
+      setTimeout(function(){ $("fMesa").focus(); }, 400);
+      return;
+    }
+    atual = c;
+    $("jTitulo").textContent = "Enviar convite a " + c.nome;
+    $("jSub").textContent = "Mesa " + c.mesa + " · " + (c.tel ? mostraTel(c.tel) : "sem telefone, vai escolher o contacto no WhatsApp");
+    $("jLongo").textContent = linkLongo(c);
+    $("jCurto").value = c.curto || "";
+    $("janela").classList.remove("oculto");
+    document.body.style.overflow = "hidden";
+  }
+  function fechaJanela(){ $("janela").classList.add("oculto"); document.body.style.overflow = ""; atual = null; }
+  $("jFechar").onclick = fechaJanela;
+  $("janela").addEventListener("click", function(e){ if (e.target === this) fechaJanela(); });
+  $("jCopiar").onclick = function(){ copiar(linkLongo(atual), "Link copiado. Agora abra o go.mz"); };
+  $("jCurto").addEventListener("input", function(){
+    var v = this.value.trim();
+    if (/^go\.mz\//i.test(v)) v = "https://" + v;
+    atual.curto = v; guardar();
+  });
+  $("jMsg").onclick = function(){ copiar(mensagem(atual), "Mensagem copiada"); marcaEnviado(); };
+  $("jWa").onclick = function(){
+    var url = "https://wa.me/" + (atual.tel || "") + "?text=" + encodeURIComponent(mensagem(atual));
+    marcaEnviado();
+    var w = window.open(url, "_blank"); if (!w) location.href = url;
   };
-  if ($("lista").value.trim()) gerar();
+  function marcaEnviado(){ if (!atual.enviado) { atual.enviado = Date.now(); guardar(); desenha(); } }
+
+  /* ---------- Janela de resposta ---------- */
+  var resp = null;
+  function abreResposta(c){ resp = c; $("rTitulo").textContent = "Resposta de " + c.nome; $("janelaR").classList.remove("oculto"); }
+  $("janelaR").addEventListener("click", function(e){
+    var b = e.target.closest("button[data-r]");
+    if (e.target === this || (b && b.dataset.r === "fechar")) { this.classList.add("oculto"); return; }
+    if (!b) return;
+    resp.resposta = b.dataset.r; guardar(); desenha(); this.classList.add("oculto"); toast("Resposta registada");
+  });
+
+  /* ---------- Mesas ---------- */
+  $("lotacao").value = d.lotacao;
+  $("lotacao").addEventListener("input", function(){ var v = parseInt(this.value, 10); if (v > 0) { d.lotacao = v; guardar(); desenhaMesas(); opcoesMesa(); } });
+  function desenhaMesas(){
+    var h = "";
+    for (var i = 1; i <= MESAS; i++) {
+      var cs = naMesa(String(i)).sort(function(a,b){ return a.nome.localeCompare(b.nome); });
+      var p = cs.length * LUGARES, pct = Math.min(100, Math.round(p / d.lotacao * 100)), livres = d.lotacao - p;
+      h += '<div class="mesa' + (cs.length ? "" : " vazia") + '"><div class="mesa-cab"><h3>Mesa ' + i + "</h3><span>" + p + " de " + d.lotacao + " lugares</span></div>" +
+        '<div class="ocup' + (p > d.lotacao ? " cheia" : "") + '"><i style="width:' + pct + '%"></i></div>' +
+        (cs.length ? "<ul>" + cs.map(function(c){ return "<li>" + esc(c.nome) + "<em>" + (c.resposta === "sim" ? "confirmou" : c.resposta === "nao" ? "não vem" : c.enviado ? "enviado" : "por enviar") + "</em></li>"; }).join("") + "</ul>" : "") +
+        (livres > 0 ? '<p class="livre">' + livres + (livres === 1 ? " lugar livre" : " lugares livres") + "</p>" : livres < 0 ? '<p class="livre" style="color:var(--warn)">Passa ' + (-livres) + " lugares do limite</p>" : '<p class="livre">Mesa completa</p>') + "</div>";
+    }
+    var sem = d.convidados.filter(function(c){ return !c.mesa; });
+    if (sem.length) h += '<div class="mesa" style="border-style:dashed"><div class="mesa-cab"><h3>Sem mesa</h3><span>' + sem.length * LUGARES + " pessoas</span></div><ul style=\"margin-top:10px\">" + sem.map(function(c){ return "<li>" + esc(c.nome) + "</li>"; }).join("") + "</ul></div>";
+    $("mesas").innerHTML = h;
+  }
+
+  /* ---------- Definições ---------- */
+  $("modelo").value = d.modelo;
+  $("modelo").addEventListener("input", function(){ d.modelo = this.value; guardar(); });
+  $("repor").onclick = function(){ d.modelo = MODELO; $("modelo").value = MODELO; guardar(); toast("Texto reposto"); };
+  $("base").value = d.base;
+  $("base").addEventListener("change", function(){ d.base = this.value.trim() || BASE; guardar(); });
+  function mostraCopia(){ $("ultimaCopia").textContent = d.ultimaCopia ? "Última cópia: " + data(d.ultimaCopia) : "Ainda não fez nenhuma cópia."; }
+  mostraCopia();
+  function descarrega(nome, txt, tipo){
+    var a = document.createElement("a");
+    a.href = URL.createObjectURL(new Blob([txt], {type:tipo}));
+    a.download = nome; document.body.appendChild(a); a.click(); a.remove();
+  }
+  $("copiaGuardar").onclick = function(){
+    d.ultimaCopia = Date.now(); guardar(); mostraCopia();
+    descarrega("convidados-elsa-moises-" + new Date().toISOString().slice(0,10) + ".json", JSON.stringify(d, null, 1), "application/json");
+    toast("Cópia guardada nas transferências");
+  };
+  $("copiaAbrir").addEventListener("change", function(){
+    var f = this.files[0]; if (!f) return;
+    var r = new FileReader();
+    r.onload = function(){
+      try {
+        var n = JSON.parse(r.result);
+        if (!n || !Array.isArray(n.convidados)) throw 0;
+        if (!confirm("Substituir a lista actual (" + d.convidados.length + " convidados) pela cópia (" + n.convidados.length + " convidados)?")) return;
+        d = Object.assign({convidados:[], modelo:MODELO, base:BASE, lotacao:10}, n);
+        guardar(); $("modelo").value = d.modelo; $("base").value = d.base; $("lotacao").value = d.lotacao; mostraCopia(); desenha();
+        toast("Cópia recuperada");
+      } catch(e){ alert("Este ficheiro não é uma cópia válida da lista de convidados."); }
+    };
+    r.readAsText(f); this.value = "";
+  });
+  $("excel").onclick = function(){
+    var linhas = [["Nome","Telefone","Mesa","Pessoas","Estado","Enviado em","Resposta","Link do convite"]];
+    d.convidados.slice().sort(function(a,b){ return (+a.mesa || 99) - (+b.mesa || 99) || a.nome.localeCompare(b.nome); }).forEach(function(c){
+      linhas.push([c.nome, c.tel ? mostraTel(c.tel) : "", c.mesa ? "Mesa " + c.mesa : "", LUGARES, c.enviado ? "Enviado" : "Por enviar", c.enviado ? data(c.enviado) : "", c.resposta === "sim" ? "Confirmou" : c.resposta === "nao" ? "Não vem" : "", c.curto || linkLongo(c)]);
+    });
+    descarrega("convidados-elsa-moises.csv", "﻿" + linhas.map(function(r){ return r.map(function(v){ return '"' + String(v).replace(/"/g, '""') + '"'; }).join(";"); }).join("\r\n"), "text/csv;charset=utf-8");
+  };
+
+  /* ---------- Desenhar tudo ---------- */
+  function desenha(){
+    var cs = d.convidados, env = cs.filter(function(c){ return c.enviado; }).length;
+    $("nConv").textContent = cs.length;
+    $("nPess").textContent = cs.length * LUGARES;
+    $("nEnv").textContent = env;
+    $("nPor").textContent = cs.length - env;
+    opcoesMesa();
+    desenhaLista();
+    if (!$("aba-mesas").classList.contains("oculto")) desenhaMesas();
+  }
+  desenha();
 })();
 </script>
 </body>

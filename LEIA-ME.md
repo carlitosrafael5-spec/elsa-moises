@@ -35,11 +35,14 @@ https://carlitosrafael5-spec.github.io/elsa-moises/?n=Família+Rafael&m=5
 - `m` · mesa do convidado
 - `l` · número de lugares (opcional, por defeito 2)
 
-## Fluxo com go.mz
+## Gestão de convidados (gerar.html)
 
-1. Abrir `gerar.html` (no próprio site publicado ou localmente)
-2. Colar a lista: `Nome ; mesa ; telefone`, uma linha por convidado
-3. Para cada convidado: copiar o link completo, criar no go.mz o link curto (o nome sugerido está na coluna "Link curto sugerido"), colar o link curto na coluna ao lado
-4. Carregar em **WhatsApp**: abre a conversa com a mensagem pronta
+Página simples, pensada para quem não é da informática:
 
-A lista fica guardada só no navegador onde foi usada. Use "Exportar CSV" para ter cópia.
+1. **Adicionar:** nome, telefone e mesa (1 a 12). Avisa se o convidado já existe ou se a mesa está cheia.
+2. **Enviar convite:** abre uma janela com dois passos. Link curto no go.mz (opcional) e envio por WhatsApp com a mensagem pronta. O convidado fica marcado como "Convite enviado", com data e hora.
+3. **Registar resposta:** quando a confirmação chega ao WhatsApp, marque "Confirmou presença" ou "Não vem".
+4. **Mesas:** as 12 mesas com quem está sentado em cada uma e os lugares livres.
+5. **Definições:** texto da mensagem, cópia de segurança e exportação para Excel.
+
+A lista fica guardada no navegador do aparelho onde é usada. Faça "Guardar cópia" com regularidade; com "Recuperar cópia" passa a lista para outro aparelho.
