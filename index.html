@@ -124,6 +124,13 @@ body.pronto .hero img{transform:scale(1)}
 .saudacao p{max-width:400px;margin:18px auto 0;font-size:16px;color:var(--ink)}
 .lugares{display:inline-flex;align-items:center;gap:10px;margin-top:24px;padding:10px 18px;border:1px solid var(--line);border-radius:999px;font-size:13px;color:var(--green);background:var(--ivory)}
 .lugares b{font-weight:500}
+.saudacao .fam{font-weight:500;color:var(--forest)}
+.info-conv{display:flex;flex-direction:column;align-items:center;gap:14px;margin-top:26px}
+.info-conv .lugares{margin-top:0}
+.mesa{border:1px solid var(--gold-soft);border-radius:14px;padding:12px 28px 14px;background:var(--ivory);text-align:center;min-width:170px}
+.mesa small{display:block;font-size:10px;letter-spacing:.28em;text-transform:uppercase;color:var(--gold)}
+.mesa b{display:block;font-family:var(--serif);font-weight:500;font-size:34px;line-height:1.1;color:var(--forest)}
+.sem-criancas{font-size:13px!important;color:var(--muted)!important;margin-top:0!important;max-width:320px}
 .versiculo{margin:44px auto 0;max-width:380px;font-family:var(--serif);font-style:italic;font-size:22px;line-height:1.35;color:var(--green)}
 .versiculo cite{display:block;margin-top:8px;font-family:var(--sans);font-style:normal;font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--muted)}
 
@@ -134,7 +141,7 @@ body.pronto .hero img{transform:scale(1)}
 .pessoa .foto{width:100%;max-width:170px;aspect-ratio:3/4;margin:0 auto;border-radius:999px 999px 14px 14px;overflow:hidden;border:1px solid var(--gold-soft);padding:5px;background:var(--paper)}
 .pessoa .foto img{width:100%;height:100%;object-fit:cover;border-radius:999px 999px 10px 10px}
 .pessoa h3{font-family:var(--serif);font-weight:500;font-size:28px;color:var(--forest);margin-top:14px;line-height:1}
-.pessoa span{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted)}
+.pessoa span{display:block;margin-top:4px;font-size:10.5px;letter-spacing:.14em;line-height:1.4;text-transform:uppercase;color:var(--muted)}
 .e-comercial{font-family:var(--script);font-size:44px;color:var(--gold);line-height:1;padding-bottom:40px}
 
 /* Cerimónias */
@@ -305,10 +312,17 @@ footer small{display:block;margin-top:26px;font-size:11px;letter-spacing:.26em;t
   <section class="saudacao">
     <div class="surge">
       <div class="ola" id="ola">Estimados familiares e amigos,</div>
-      <p>É com enorme alegria que vos convidamos a estar connosco no dia em que, diante de Deus, da família e dos amigos, uniremos as nossas vidas.</p>
-      <div class="lugares oculto" id="lugares">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="9" cy="8" r="3.2"/><path d="M3 19c0-3.3 2.7-5.5 6-5.5s6 2.2 6 5.5"/><circle cx="17" cy="9" r="2.5"/><path d="M16 13.6c2.8.2 5 2.2 5 5"/></svg>
-        <span id="lugaresTxt"></span>
+      <p>As famílias <b class="fam">Rafael</b> e <b class="fam">Magumisse</b> têm a honra de vos convidar para o casamento dos seus filhos <b class="fam">Elsa</b> e <b class="fam">Moisés</b>, que diante de Deus, da família e dos amigos vão unir as suas vidas.</p>
+      <div class="info-conv">
+        <div class="lugares" id="lugares">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="9" cy="8" r="3.2"/><path d="M3 19c0-3.3 2.7-5.5 6-5.5s6 2.2 6 5.5"/><circle cx="17" cy="9" r="2.5"/><path d="M16 13.6c2.8.2 5 2.2 5 5"/></svg>
+          <span id="lugaresTxt">Convite válido para <b>2 pessoas</b></span>
+        </div>
+        <div class="mesa oculto" id="mesa">
+          <small>A vossa mesa</small>
+          <b id="mesaTxt"></b>
+        </div>
+        <p class="sem-criancas">Pedimos a vossa compreensão: esta celebração é reservada a adultos, sem crianças.</p>
       </div>
     </div>
     <blockquote class="versiculo surge">
@@ -327,13 +341,13 @@ footer small{display:block;margin-top:26px;font-size:11px;letter-spacing:.26em;t
       <div class="pessoa">
         <div class="foto"><img src="img/elsa.jpg" alt="Elsa" loading="lazy"></div>
         <h3>Elsa</h3>
-        <span>A noiva</span>
+        <span>Família Rafael</span>
       </div>
       <div class="e-comercial">&amp;</div>
       <div class="pessoa">
         <div class="foto"><img src="img/moises.jpg" alt="Moisés" loading="lazy"></div>
         <h3>Moisés</h3>
-        <span>O noivo</span>
+        <span>Família Magumisse</span>
       </div>
     </div>
   </section>
@@ -516,7 +530,9 @@ footer small{display:block;margin-top:26px;font-size:11px;letter-spacing:.26em;t
 var CONFIG = {
   // Número de WhatsApp que recebe as confirmações (formato internacional, só dígitos). Ex.: "258841234567"
   // Se ficar vazio, o WhatsApp abre e o convidado escolhe o contacto.
-  whatsappNoivos: "",
+  whatsappNoivos: "258842010348",
+  // Lugares por convite (pode ser alterado por convidado com &l= no link)
+  lugaresPadrao: 2,
   // Data limite para confirmar (texto livre). Vazio = não mostra.
   prazoConfirmacao: "",
   // Villa Sky Hotel Apartment (coordenadas do link enviado)
@@ -550,7 +566,9 @@ var PROGRAMA = [
   var q = new URLSearchParams(location.search);
   var nome = (q.get("n") || q.get("nome") || "").trim().slice(0, 80);
   var lugares = parseInt(q.get("l") || q.get("lugares") || "0", 10);
-  if (!(lugares > 0 && lugares < 21)) lugares = 0;
+  if (!(lugares > 0 && lugares < 21)) lugares = CONFIG.lugaresPadrao;
+  var mesa = (q.get("m") || q.get("mesa") || "").trim().slice(0, 30);
+  var mesaNome = /^\d+$/.test(mesa) ? "Mesa " + mesa : mesa;
 
   if (nome) {
     $("capaRotulo").textContent = "Convite especial para";
@@ -559,11 +577,12 @@ var PROGRAMA = [
     $("fNome").value = nome;
     document.title = nome + " · Convite Elsa & Moisés";
   }
-  if (lugares) {
-    $("lugares").classList.remove("oculto");
-    $("lugaresTxt").innerHTML = "Este convite é válido para <b>" + lugares + (lugares === 1 ? " pessoa" : " pessoas") + "</b>";
+  $("lugaresTxt").innerHTML = "Convite válido para <b>" + lugares + (lugares === 1 ? " pessoa" : " pessoas") + "</b>";
+  if (mesa) {
+    $("mesa").classList.remove("oculto");
+    $("mesaTxt").textContent = mesaNome;
   }
-  var maxPessoas = lugares || 10;
+  var maxPessoas = lugares;
   if (CONFIG.prazoConfirmacao) {
     $("rsvpIntro").textContent = "Pedimos que confirmem a presença até " + CONFIG.prazoConfirmacao + ". A resposta segue por WhatsApp directamente para os noivos.";
   }
@@ -725,6 +744,7 @@ var PROGRAMA = [
     var t = "Olá Elsa e Moisés! Sou " + nm + ".\n";
     t += sim ? "Confirmo a presença no vosso casamento, dia 28 de Novembro. Seremos " + n + (n === 1 ? " pessoa." : " pessoas.")
              : "Infelizmente não poderei estar presente no vosso casamento, mas desejo-vos muitas felicidades.";
+    if (sim && mesa) t += " " + mesaNome + ".";
     if (msg) t += "\n\n" + msg;
     var url = "https://wa.me/" + (CONFIG.whatsappNoivos || "") + "?text=" + encodeURIComponent(t);
     $("formNota").textContent = "A abrir o WhatsApp. Só falta carregar em enviar.";

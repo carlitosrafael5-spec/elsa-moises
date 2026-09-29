@@ -45,9 +45,9 @@ td input{padding:7px 9px;font-size:14px}
   <div class="caixa">
     <label for="base">Endereço do convite</label>
     <input id="base" value="https://carlitosrafael5-spec.github.io/elsa-moises/">
-    <label for="lista">Convidados (um por linha: Nome ; lugares ; telefone)</label>
-    <textarea id="lista" placeholder="Família Macuácua ; 4 ; 258841234567&#10;Ana Sitoe ; 2 ; 258861112233&#10;Dr. Júlio Mondlane ; 1"></textarea>
-    <p class="dica">Lugares e telefone são opcionais. O telefone deve ir com o 258 à frente.</p>
+    <label for="lista">Convidados (um por linha: Nome ; mesa ; telefone)</label>
+    <textarea id="lista" placeholder="Família Macuácua ; 5 ; 258841234567&#10;Ana Sitoe ; ; 258861112233&#10;Dr. Júlio Mondlane ; Mesa de Honra"></textarea>
+    <p class="dica">Mesa e telefone podem ficar em branco. Se a mesa faltar, é perguntada no momento de copiar o link ou enviar. Defina a mesa antes de criar o link curto no go.mz, porque a mesa faz parte do link. O telefone leva o 258 à frente. Todos os convites são para 2 pessoas, sem crianças.</p>
     <label for="modelo">Mensagem de WhatsApp</label>
     <textarea id="modelo" style="min-height:110px;font-family:inherit"></textarea>
     <p class="dica">Use {nome} e {link}. O {link} usa o link curto se o tiver colado, senão o link completo.</p>
@@ -60,7 +60,7 @@ td input{padding:7px 9px;font-size:14px}
 
   <div class="caixa" id="res" hidden>
     <table>
-      <thead><tr><th>Convidado</th><th>Link curto sugerido</th><th>Link curto (go.mz)</th><th>Enviar</th></tr></thead>
+      <thead><tr><th>Convidado</th><th>Mesa</th><th>Link curto sugerido</th><th>Link curto (go.mz)</th><th>Enviar</th></tr></thead>
       <tbody id="tb"></tbody>
     </table>
   </div>
@@ -77,10 +77,11 @@ td input{padding:7px 9px;font-size:14px}
   $("modelo").value = est.modelo || MODELO;
   if (est.base) $("base").value = est.base;
   var curtos = est.curtos || {};
+  var mesas = est.mesas || {};
   var linhas = [];
 
   function guardar(){
-    try { localStorage.setItem(K, JSON.stringify({lista:$("lista").value, modelo:$("modelo").value, base:$("base").value, curtos:curtos})); } catch(e){}
+    try { localStorage.setItem(K, JSON.stringify({lista:$("lista").value, modelo:$("modelo").value, base:$("base").value, curtos:curtos, mesas:mesas})); } catch(e){}
   }
   function slug(s){
     return s.normalize("NFD").replace(/[̀-ͯ]/g,"").toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"").slice(0,30);
@@ -88,7 +89,18 @@ td input{padding:7px 9px;font-size:14px}
   function longo(l){
     var u = $("base").value.trim();
     if (!/\/$/.test(u) && !/\.html$/.test(u)) u += "/";
-    return u + "?n=" + encodeURIComponent(l.nome).replace(/%20/g,"+") + (l.lug ? "&l=" + l.lug : "");
+    return u + "?n=" + encodeURIComponent(l.nome).replace(/%20/g,"+") + (l.mesa ? "&m=" + encodeURIComponent(l.mesa).replace(/%20/g,"+") : "");
+  }
+  function pedirMesa(i){
+    var l = linhas[i];
+    if (l.mesa) return true;
+    var r = prompt("Qual é a mesa de " + l.nome + "?\n(número ou nome, ex.: 7 ou Mesa de Honra)", "");
+    if (r === null) return false;
+    l.mesa = r.trim(); mesas[l.nome] = l.mesa; guardar();
+    var inp = document.querySelector('[data-mesa="' + i + '"]'); if (inp) inp.value = l.mesa;
+    var lg = document.querySelector('[data-longo="' + i + '"]'); if (lg) lg.textContent = longo(l);
+    actualizarWa();
+    return !!l.mesa;
   }
   function mensagem(l){
     var link = curtos[l.nome] || longo(l);
@@ -101,14 +113,17 @@ td input{padding:7px 9px;font-size:14px}
     linhas = $("lista").value.split(/\r?\n/).map(function(t){
       var p = t.split(";").map(function(x){ return x.trim(); });
       if (!p[0]) return null;
-      return {nome:p[0], lug:parseInt(p[1],10) || 0, tel:(p[2]||"").replace(/\D/g,"")};
+      var m = p[1] || mesas[p[0]] || "";
+      if (p[1]) mesas[p[0]] = p[1];
+      return {nome:p[0], mesa:m, tel:(p[2]||"").replace(/\D/g,"")};
     }).filter(Boolean);
     var h = "";
     linhas.forEach(function(l, i){
       var lg = longo(l);
-      h += "<tr><td><b>" + esc(l.nome) + "</b>" + (l.lug ? " · " + l.lug + " lug." : "") +
-        '<div class="longo">' + esc(lg) + '</div>' +
+      h += "<tr><td><b>" + esc(l.nome) + "</b>" +
+        '<div class="longo" data-longo="' + i + '">' + esc(lg) + '</div>' +
         '<button class="b2" style="margin-top:6px;padding:5px 10px;font-size:12px" data-copiar="' + i + '">Copiar link completo</button></td>' +
+        '<td><input data-mesa="' + i + '" placeholder="Mesa" style="max-width:110px" value="' + esc(l.mesa) + '"></td>' +
         '<td class="slug">em-' + slug(l.nome) + "</td>" +
         '<td><input data-curto="' + i + '" placeholder="https://go.mz/..." value="' + esc(curtos[l.nome] || "") + '"></td>' +
         '<td><a class="b wa" data-wa="' + i + '" target="_blank" rel="noopener">WhatsApp</a> ' +
@@ -133,18 +148,30 @@ td input{padding:7px 9px;font-size:14px}
   $("gerar").onclick = gerar;
   $("modelo").addEventListener("input", function(){ guardar(); actualizarWa(); });
   $("tb").addEventListener("input", function(e){
+    var mi = e.target.dataset.mesa;
+    if (mi !== undefined) {
+      var l = linhas[mi]; l.mesa = e.target.value.trim(); mesas[l.nome] = l.mesa; guardar();
+      document.querySelector('[data-longo="' + mi + '"]').textContent = longo(l);
+      actualizarWa(); return;
+    }
     var i = e.target.dataset.curto; if (i === undefined) return;
     curtos[linhas[i].nome] = e.target.value.trim(); guardar(); actualizarWa();
   });
   $("tb").addEventListener("click", function(e){
     var b = e.target;
-    if (b.dataset.copiar !== undefined) copiar(longo(linhas[+b.dataset.copiar]), b);
-    if (b.dataset.msg !== undefined) copiar(mensagem(linhas[+b.dataset.msg]), b);
+    if (b.dataset.copiar !== undefined) { if (pedirMesa(+b.dataset.copiar)) copiar(longo(linhas[+b.dataset.copiar]), b); }
+    if (b.dataset.msg !== undefined) { if (pedirMesa(+b.dataset.msg)) copiar(mensagem(linhas[+b.dataset.msg]), b); }
+    if (b.dataset.wa !== undefined) {
+      e.preventDefault();
+      if (!pedirMesa(+b.dataset.wa)) return;
+      var w = window.open(b.href, "_blank");
+      if (!w) location.href = b.href;
+    }
   });
   $("csv").onclick = function(){
     if (!linhas.length) gerar();
-    var c = [["Nome","Lugares","Telefone","Link completo","Link curto sugerido","Link curto"]];
-    linhas.forEach(function(l){ c.push([l.nome, l.lug || "", l.tel, longo(l), "em-" + slug(l.nome), curtos[l.nome] || ""]); });
+    var c = [["Nome","Mesa","Telefone","Link completo","Link curto sugerido","Link curto"]];
+    linhas.forEach(function(l){ c.push([l.nome, l.mesa, l.tel, longo(l), "em-" + slug(l.nome), curtos[l.nome] || ""]); });
     var txt = "﻿" + c.map(function(r){ return r.map(function(v){ return '"' + String(v).replace(/"/g,'""') + '"'; }).join(";"); }).join("\r\n");
     var a = document.createElement("a");
     a.href = URL.createObjectURL(new Blob([txt], {type:"text/csv;charset=utf-8"}));
