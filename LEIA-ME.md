@@ -28,16 +28,17 @@ Se usar outro nome de repositório, actualize o `og:image` no topo do `index.htm
 ## Link personalizado de cada convidado
 
 ```
-https://carlitosrafael5-spec.github.io/elsa-moises/?n=Ana+Sitoe&l=2
+https://carlitosrafael5-spec.github.io/elsa-moises/?n=Família+Rafael&m=5
 ```
 
 - `n` · nome que aparece no envelope, na saudação e já preenchido na confirmação
-- `l` · número de lugares (opcional)
+- `m` · mesa do convidado
+- `l` · número de lugares (opcional, por defeito 2)
 
 ## Fluxo com go.mz
 
 1. Abrir `gerar.html` (no próprio site publicado ou localmente)
-2. Colar a lista: `Nome ; lugares ; telefone`, uma linha por convidado
+2. Colar a lista: `Nome ; mesa ; telefone`, uma linha por convidado
 3. Para cada convidado: copiar o link completo, criar no go.mz o link curto (o nome sugerido está na coluna "Link curto sugerido"), colar o link curto na coluna ao lado
 4. Carregar em **WhatsApp**: abre a conversa com a mensagem pronta
 

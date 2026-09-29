@@ -6,31 +6,31 @@
 <title>Elsa &amp; Moisés · 28 de Novembro de 2026</title>
 <meta name="description" content="Convite de casamento de Elsa e Moisés. Chimoio, 28 de Novembro de 2026.">
 <meta name="robots" content="noindex, nofollow">
-<meta name="theme-color" content="#23352a">
+<meta name="theme-color" content="#1c4a2f">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Elsa & Moisés · Convite de Casamento">
 <meta property="og:description" content="Sábado, 28 de Novembro de 2026, em Chimoio. Toque para abrir o seu convite.">
 <meta property="og:image" content="https://carlitosrafael5-spec.github.io/elsa-moises/img/partilha.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='30' fill='%23a3823f'/%3E%3Ctext x='32' y='41' font-family='Georgia' font-size='26' fill='%23fbf8f2' text-anchor='middle'%3EEM%3C/text%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='30' fill='%232f4a38'/%3E%3Ctext x='32' y='41' font-family='Georgia' font-size='26' fill='%23ffffff' text-anchor='middle'%3EEM%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Jost:wght@300;400;500&family=Pinyon+Script&display=swap" rel="stylesheet">
 <link rel="preload" as="image" href="img/casal-2.jpg">
 <style>
 :root{
-  --forest:#23352a;
-  --green:#2f4a38;
-  --sage:#8d9c82;
-  --sage-soft:#dfe5d8;
-  --gold:#a3823f;
-  --gold-soft:#d9c59a;
-  --ivory:#f6f1e7;
-  --paper:#fbf8f2;
-  --ink:#27302a;
+  --forest:#1c4a2f;
+  --green:#28673f;
+  --sage:#7fa187;
+  --sage-soft:#e3efe3;
+  --gold:#3d7a4e;
+  --gold-soft:#d6ead6;
+  --ivory:#f2f7f2;
+  --paper:#ffffff;
+  --ink:#1f2c23;
   --muted:#6b7268;
-  --line:rgba(35,53,42,.14);
+  --line:rgba(35,70,45,.14);
   --serif:"Cormorant Garamond", Georgia, "Times New Roman", serif;
   --sans:"Jost", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   --script:"Pinyon Script", "Cormorant Garamond", cursive;
@@ -46,7 +46,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;-webki
 /* ---------- Capa / envelope ---------- */
 #capa{position:fixed;inset:0;z-index:50;display:grid;place-items:center;padding:24px 16px;
   background:
-    radial-gradient(120% 80% at 50% 0%, #3b5a45 0%, var(--forest) 55%, #18251d 100%);
+    radial-gradient(120% 80% at 50% 0%, #2f7048 0%, var(--forest) 55%, #11321f 100%);
   transition:opacity .9s ease .5s, visibility 0s linear 1.4s}
 #capa.aberta{opacity:0;visibility:hidden}
 #capa::before{content:"";position:absolute;inset:0;opacity:.18;pointer-events:none;
@@ -54,7 +54,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;-webki
 .capa-topo{position:absolute;top:max(28px, env(safe-area-inset-top));left:0;right:0;text-align:center;color:var(--gold-soft);
   font-size:11px;letter-spacing:.32em;text-transform:uppercase}
 .envelope{position:relative;width:min(340px, 88vw);aspect-ratio:1.42;perspective:1200px;cursor:pointer;outline:none}
-.env-corpo{position:absolute;inset:0;background:#efe7d6;border-radius:6px;box-shadow:0 30px 60px -20px rgba(0,0,0,.55), 0 2px 0 rgba(255,255,255,.4) inset}
+.env-corpo{position:absolute;inset:0;background:#f4f7f3;border-radius:6px;box-shadow:0 30px 60px -20px rgba(0,0,0,.55), 0 2px 0 rgba(255,255,255,.4) inset}
 .env-carta{position:absolute;left:6%;right:6%;top:8%;bottom:6%;background:var(--paper);border-radius:3px;
   display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:12px;
   transition:transform 1s cubic-bezier(.2,.8,.2,1) .35s;z-index:1}
@@ -65,11 +65,11 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;-webki
 .env-aba{position:absolute;left:0;right:0;top:0;height:58%;z-index:3;transform-origin:top center;transition:transform .7s ease, z-index 0s linear .35s}
 .env-aba svg{width:100%;height:100%;display:block;filter:drop-shadow(0 4px 4px rgba(0,0,0,.12))}
 .selo{position:absolute;left:50%;top:58%;width:64px;height:64px;margin:-32px 0 0 -32px;z-index:4;border-radius:50%;
-  background:radial-gradient(circle at 35% 30%, #c9a45a, var(--gold) 55%, #7a5f28);
+  background:radial-gradient(circle at 35% 30%, #5f9a6c, #2f5e3c 55%, #1c3a25);
   box-shadow:0 6px 14px rgba(0,0,0,.35), inset 0 -3px 6px rgba(0,0,0,.25), inset 0 2px 3px rgba(255,255,255,.35);
-  display:grid;place-items:center;color:#fff8e6;font-family:var(--serif);font-style:italic;font-size:22px;letter-spacing:.02em;
+  display:grid;place-items:center;color:#ffffff;font-family:var(--serif);font-style:italic;font-size:22px;letter-spacing:.02em;
   transition:transform .5s ease, opacity .4s ease}
-.selo::after{content:"";position:absolute;inset:6px;border-radius:50%;border:1px solid rgba(255,248,230,.45)}
+.selo::after{content:"";position:absolute;inset:6px;border-radius:50%;border:1px solid rgba(255,255,255,.45)}
 .envelope.aberto .selo{transform:scale(.6) translateY(-10px);opacity:0}
 .envelope.aberto .env-aba{transform:rotateX(180deg);z-index:0}
 .envelope.aberto .env-carta{transform:translateY(-62%)}
@@ -77,15 +77,15 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;-webki
 .capa-para span{display:block;font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:var(--gold-soft)}
 .capa-para strong{display:block;font-family:var(--serif);font-weight:400;font-size:30px;line-height:1.15;margin-top:6px}
 .capa-toque{margin-top:26px;display:inline-flex;align-items:center;gap:10px;padding:13px 26px;border-radius:999px;
-  border:1px solid rgba(217,197,154,.55);color:var(--ivory);font-size:13px;letter-spacing:.14em;text-transform:uppercase;
+  border:1px solid rgba(214,234,214,.55);color:var(--ivory);font-size:13px;letter-spacing:.14em;text-transform:uppercase;
   animation:respira 2.4s ease-in-out infinite}
 .capa-toque svg{width:16px;height:16px}
-@keyframes respira{0%,100%{box-shadow:0 0 0 0 rgba(217,197,154,.35)}50%{box-shadow:0 0 0 10px rgba(217,197,154,0)}}
+@keyframes respira{0%,100%{box-shadow:0 0 0 0 rgba(214,234,214,.35)}50%{box-shadow:0 0 0 10px rgba(214,234,214,0)}}
 .capa-wrap{display:flex;flex-direction:column;align-items:center}
 
 /* ---------- Música ---------- */
 #musica{position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom));z-index:40;width:48px;height:48px;border-radius:50%;
-  background:rgba(35,53,42,.9);color:var(--gold-soft);display:none;place-items:center;box-shadow:0 8px 20px rgba(0,0,0,.25);
+  background:rgba(28,74,47,.92);color:var(--gold-soft);display:none;place-items:center;box-shadow:0 8px 20px rgba(0,0,0,.25);
   backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
 #musica.visivel{display:grid}
 #musica svg{width:20px;height:20px}
@@ -129,7 +129,7 @@ body.pronto .hero img{transform:scale(1)}
 .info-conv .lugares{margin-top:0}
 .mesa{border:1px solid var(--gold-soft);border-radius:14px;padding:12px 28px 14px;background:var(--ivory);text-align:center;min-width:170px}
 .mesa small{display:block;font-size:10px;letter-spacing:.28em;text-transform:uppercase;color:var(--gold)}
-.mesa b{display:block;font-family:var(--serif);font-weight:500;font-size:34px;line-height:1.1;color:var(--forest)}
+.mesa b{display:block;font-family:var(--serif);font-variant-numeric:lining-nums;font-weight:500;font-size:34px;line-height:1.1;color:var(--forest)}
 .sem-criancas{font-size:13px!important;color:var(--muted)!important;margin-top:0!important;max-width:320px}
 .versiculo{margin:44px auto 0;max-width:380px;font-family:var(--serif);font-style:italic;font-size:22px;line-height:1.35;color:var(--green)}
 .versiculo cite{display:block;margin-top:8px;font-family:var(--sans);font-style:normal;font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--muted)}
@@ -160,8 +160,8 @@ body.pronto .hero img{transform:scale(1)}
 .contagem h2{color:var(--ivory)}
 .contagem .rotulo{color:var(--gold-soft)}
 .relogio{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:30px}
-.relogio div{text-align:center;padding:16px 4px;border:1px solid rgba(217,197,154,.25);border-radius:12px}
-.relogio b{display:block;font-family:var(--serif);font-weight:400;font-size:40px;line-height:1;font-variant-numeric:tabular-nums}
+.relogio div{text-align:center;padding:16px 4px;border:1px solid rgba(214,234,214,.25);border-radius:12px}
+.relogio b{display:block;font-family:var(--sans);font-weight:300;font-size:34px;line-height:1;font-variant-numeric:tabular-nums}
 .relogio span{font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold-soft)}
 .relogio-fim{margin-top:26px;text-align:center;font-family:var(--serif);font-style:italic;font-size:24px;display:none}
 .calendario{margin:40px auto 0;max-width:330px}
@@ -170,13 +170,13 @@ body.pronto .hero img{transform:scale(1)}
 .calendario .grelha .ds{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold-soft);padding-bottom:6px}
 .calendario .grelha span{padding:7px 0;color:rgba(246,241,231,.75)}
 .calendario .grelha .dia-d{position:relative;color:var(--forest);font-weight:500}
-.calendario .grelha .dia-d::before{content:"";position:absolute;left:50%;top:50%;width:34px;height:34px;margin:-17px 0 0 -17px;border-radius:50%;background:var(--gold-soft);z-index:-1}
+.calendario .grelha .dia-d::before{content:"";position:absolute;left:50%;top:50%;width:34px;height:34px;margin:-17px 0 0 -17px;border-radius:50%;background:#ffffff;z-index:-1}
 .calendario .grelha .dia-d{z-index:0}
 .botoes{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:30px}
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:46px;padding:12px 22px;border-radius:999px;font-size:13px;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;font-weight:400;transition:transform .15s ease, background .2s ease}
 .btn:active{transform:scale(.97)}
 .btn svg{width:16px;height:16px;flex:none}
-.btn-claro{border:1px solid rgba(217,197,154,.6);color:var(--ivory)}
+.btn-claro{border:1px solid rgba(214,234,214,.6);color:var(--ivory)}
 .btn-cheio{background:var(--green);color:var(--ivory)}
 .btn-contorno{border:1px solid var(--green);color:var(--green)}
 
@@ -187,10 +187,10 @@ body.pronto .hero img{transform:scale(1)}
 .linha li::before{content:"";position:absolute;left:58px;top:21px;width:9px;height:9px;border-radius:50%;background:var(--paper);border:1px solid var(--gold);transition:background .3s}
 .linha li.bloco{padding-top:26px}
 .linha li.bloco::after{content:attr(data-bloco);position:absolute;left:84px;top:4px;font-size:10px;letter-spacing:.26em;text-transform:uppercase;color:var(--sage)}
-.linha time{font-family:var(--serif);font-size:20px;color:var(--forest);font-weight:500;text-align:right;line-height:1.3;font-variant-numeric:tabular-nums}
+.linha time{font-family:var(--sans);font-size:15px;color:var(--forest);font-weight:400;padding-top:3px;text-align:right;line-height:1.3;font-variant-numeric:tabular-nums}
 .linha h4{font-family:var(--serif);font-weight:500;font-size:20px;color:var(--ink);line-height:1.3}
 .linha p{font-size:14px;color:var(--muted);margin-top:2px}
-.linha li.agora::before{background:var(--gold);box-shadow:0 0 0 5px rgba(163,130,63,.18)}
+.linha li.agora::before{background:var(--gold);box-shadow:0 0 0 5px rgba(61,122,78,.18)}
 .linha li.agora h4::after{content:"a decorrer";margin-left:8px;font-family:var(--sans);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:#fff;background:var(--gold);padding:2px 8px;border-radius:99px;vertical-align:3px}
 .linha li.passou{opacity:.5}
 
@@ -224,18 +224,18 @@ body.pronto .hero img{transform:scale(1)}
 .confirmar .intro{text-align:center;max-width:380px;margin:14px auto 0;font-size:15px;color:rgba(246,241,231,.8)}
 form{margin-top:30px;display:grid;gap:16px}
 label{display:block;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold-soft);margin-bottom:8px}
-input[type=text],textarea{width:100%;font:inherit;font-size:16px;color:var(--ivory);background:rgba(255,255,255,.06);border:1px solid rgba(217,197,154,.3);border-radius:10px;padding:13px 14px;outline:none;transition:border-color .2s}
+input[type=text],textarea{width:100%;font:inherit;font-size:16px;color:var(--ivory);background:rgba(255,255,255,.06);border:1px solid rgba(214,234,214,.3);border-radius:10px;padding:13px 14px;outline:none;transition:border-color .2s}
 input[type=text]:focus,textarea:focus{border-color:var(--gold-soft)}
 textarea{min-height:96px;resize:vertical}
 .escolha{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 .escolha input{position:absolute;opacity:0;pointer-events:none}
-.escolha label{margin:0;display:flex;align-items:center;justify-content:center;min-height:52px;padding:10px;border-radius:10px;border:1px solid rgba(217,197,154,.3);font-size:13px;letter-spacing:.08em;text-transform:none;color:var(--ivory);text-align:center;cursor:pointer;transition:all .2s}
-.escolha input:checked + label{background:var(--gold-soft);border-color:var(--gold-soft);color:var(--forest);font-weight:500}
-.contador{display:flex;align-items:center;gap:0;border:1px solid rgba(217,197,154,.3);border-radius:10px;width:max-content}
+.escolha label{margin:0;display:flex;align-items:center;justify-content:center;min-height:52px;padding:10px;border-radius:10px;border:1px solid rgba(214,234,214,.3);font-size:13px;letter-spacing:.08em;text-transform:none;color:var(--ivory);text-align:center;cursor:pointer;transition:all .2s}
+.escolha input:checked + label{background:#ffffff;border-color:#ffffff;color:var(--forest);font-weight:500}
+.contador{display:flex;align-items:center;gap:0;border:1px solid rgba(214,234,214,.3);border-radius:10px;width:max-content}
 .contador button{width:52px;height:50px;font-size:22px;color:var(--gold-soft)}
-.contador output{min-width:40px;text-align:center;font-family:var(--serif);font-size:26px}
+.contador output{min-width:40px;text-align:center;font-family:var(--sans);font-weight:300;font-size:22px}
 .form-nota{font-size:13px;color:rgba(246,241,231,.6);text-align:center}
-.btn-ouro{background:var(--gold-soft);color:var(--forest);font-weight:500;width:100%;min-height:54px}
+.btn-ouro{background:#ffffff;color:var(--forest);font-weight:500;width:100%;min-height:54px}
 .oculto{display:none!important}
 
 /* Rodapé */
@@ -269,13 +269,13 @@ footer small{display:block;margin-top:26px;font-size:11px;letter-spacing:.26em;t
       </div>
       <div class="env-frente">
         <svg viewBox="0 0 340 240" preserveAspectRatio="none" aria-hidden="true">
-          <path d="M0 0 L170 138 L340 0 L340 240 L0 240 Z" fill="#e9dfca"/>
-          <path d="M0 240 L150 122 M340 240 L190 122" stroke="#d9ccb0" stroke-width="1.2" fill="none"/>
+          <path d="M0 0 L170 138 L340 0 L340 240 L0 240 Z" fill="#ffffff"/>
+          <path d="M0 240 L150 122 M340 240 L190 122" stroke="#dbe6da" stroke-width="1.2" fill="none"/>
         </svg>
       </div>
       <div class="env-aba">
         <svg viewBox="0 0 340 140" preserveAspectRatio="none" aria-hidden="true">
-          <path d="M0 0 L340 0 L170 138 Z" fill="#e2d6bd"/>
+          <path d="M0 0 L340 0 L170 138 Z" fill="#eef4ed"/>
         </svg>
       </div>
       <div class="selo" aria-hidden="true">E&amp;M</div>
@@ -364,7 +364,7 @@ footer small{display:block;margin-top:26px;font-size:11px;letter-spacing:.26em;t
         <div>
           <div class="hora">11:30</div>
           <h3>Cerimónia Religiosa</h3>
-          <p>Paróquia Maria Imaculada, Chimoio<br>Presidida pelo Padre Sinate</p>
+          <p>Paróquia Maria Imaculada, Chimoio<br>Presidida pelo Padre</p>
           <a class="mini" id="linkIgreja" target="_blank" rel="noopener">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0114 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>
             Ver no mapa
@@ -542,14 +542,14 @@ var CONFIG = {
 };
 
 var PROGRAMA = [
-  {h:"11:30", t:"Cerimónia Religiosa", d:"Na Paróquia Maria Imaculada de Chimoio, presidida pelo Padre Sinate", b:"Igreja"},
+  {h:"11:30", t:"Cerimónia Religiosa", d:"Na Paróquia Maria Imaculada de Chimoio, presidida pelo Padre", b:"Igreja"},
   {h:"13:30", t:"Saudações aos noivos", d:"Encerramento da cerimónia religiosa"},
   {h:"14:00", t:"Sessão de fotografia", d:"Noivos e família em vários pontos da cidade de Chimoio, orientada pelos fotógrafos"},
   {h:"15:30", t:"Cerimónia Civil", d:"No jardim da Villa Sky, Trangapasso, dirigida pelo Conservador", b:"Villa Sky"},
   {h:"16:00", t:"Cocktail"},
   {h:"16:05", t:"Sessão de fotografia", d:"No jardim da Villa, com os noivos, a família e os convidados"},
   {h:"17:00", t:"Início do copo de água", b:"Copo de Água"},
-  {h:"17:10", t:"Oração", d:"Dirigida pelo Padre Sinate"},
+  {h:"17:10", t:"Oração", d:"Dirigida pelo Padre"},
   {h:"17:15", t:"Corte do bolo e brinde", d:"Abertura do champanhe, orientada pelo Mestre de Cerimónias"},
   {h:"20:00", t:"Primeira dança dos noivos", d:"Seguida dos padrinhos e dos pais. Depois, a pista fica aberta a todos"},
   {h:"21:30", t:"Lançamento do bouquet", d:"E leilão da gravata do noivo"},
