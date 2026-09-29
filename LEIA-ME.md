@@ -32,7 +32,7 @@ https://carlitosrafael5-spec.github.io/elsa-moises/?n=Família+Rafael&m=5
 ```
 
 - `n` · nome que aparece no envelope, na saudação e já preenchido na confirmação
-- `m` · número da mesa (1 a 12). O convite mostra o nome: 1 Zambeze, 2 Púnguè, 3 Revué, 4 Limpopo, 5 Salomão, 6 Isaías, 7 Mateus, 8 João, 9 Ilha de Moçambique, 10 Cabeça do Velho, 11 Chinhamapere, 12 Fortaleza de São Sebastião. Os nomes estão em `MESAS` (index.html) e `NOMES` (gerar.html).
+- `m` · número da mesa (1 a 12). O convite mostra o nome da virtude bíblica: 1 Amor, 2 Fé, 3 Esperança, 4 Alegria, 5 Paz, 6 Paciência, 7 Bondade, 8 Fidelidade, 9 Mansidão, 10 Domínio Próprio, 11 Humildade, 12 Sabedoria. Os nomes estão em `MESAS` (index.html) e `NOMES` (gerar.html).
 - `l` · número de lugares (opcional, por defeito 2)
 
 ## Gestão de convidados (gerar.html)

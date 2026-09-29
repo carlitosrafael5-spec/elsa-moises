@@ -167,7 +167,7 @@ textarea{min-height:170px;resize:vertical}
     </section>
 
     <div class="barra">
-      <input type="search" id="procura" placeholder="Procurar por nome, telefone ou mesa (ex.: Zambeze)">
+      <input type="search" id="procura" placeholder="Procurar por nome, telefone ou mesa (ex.: Esperança)">
     </div>
     <div class="barra filtros" id="filtros">
       <button class="on" data-f="todos" type="button">Todos</button>
@@ -183,7 +183,7 @@ textarea{min-height:170px;resize:vertical}
   <div id="aba-mesas" class="oculto">
     <div class="cartao">
       <h2>As 12 mesas</h2>
-      <p class="sub">Rios, autores bíblicos e monumentos históricos. Cada convidado ocupa 2 lugares.</p>
+      <p class="sub">Cada mesa tem o nome de uma virtude bíblica. Cada convidado ocupa 2 lugares.</p>
       <div class="linha-botoes" style="align-items:center">
         <label for="lotacao" style="margin:0">Lugares por mesa</label>
         <input type="number" id="lotacao" min="1" max="50" inputmode="numeric" style="width:90px">
@@ -287,9 +287,9 @@ textarea{min-height:170px;resize:vertical}
   var MODELO = "Olá {nome}!\n\nA Elsa e o Moisés têm a alegria de vos convidar para o seu casamento, no dia 28 de Novembro de 2026, em Chimoio.\n\nO vosso convite está aqui:\n{link}\n\nContamos convosco!";
   var LUGARES = 2, MESAS = 12;
   var NOMES = {
-    1:["Zambeze","Rio"], 2:["Púnguè","Rio"], 3:["Revué","Rio"], 4:["Limpopo","Rio"],
-    5:["Salomão","Autor bíblico"], 6:["Isaías","Autor bíblico"], 7:["Mateus","Autor bíblico"], 8:["João","Autor bíblico"],
-    9:["Ilha de Moçambique","Monumento histórico"], 10:["Cabeça do Velho","Monumento histórico"], 11:["Chinhamapere","Monumento histórico"], 12:["Fortaleza de São Sebastião","Monumento histórico"]
+    1:["Amor","1 Coríntios 13:13"], 2:["Fé","1 Coríntios 13:13"], 3:["Esperança","1 Coríntios 13:13"], 4:["Alegria","Gálatas 5:22"],
+    5:["Paz","Gálatas 5:22"], 6:["Paciência","Gálatas 5:22"], 7:["Bondade","Gálatas 5:22"], 8:["Fidelidade","Gálatas 5:22"],
+    9:["Mansidão","Gálatas 5:23"], 10:["Domínio Próprio","Gálatas 5:23"], 11:["Humildade","Colossenses 3:12"], 12:["Sabedoria","Tiago 3:17"]
   };
   function nomeMesa(m){ return NOMES[m] ? NOMES[m][0] : "Mesa " + m; }
 
